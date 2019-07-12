@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> Electric bicycle website </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="styles/css/style.css">
+    <script src="styles/js/script.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div>
+    <header class="header">
+        <a href="index.html"> <img class="imageHeader" src="images/logo2.png"></a>
+    </header>
+</div>
+
+<div class=" w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left barColor" id="mySidebar">
+    <a href="index.html" class="w3-bar-item w3-button">SĀKUMLAPA(noteikumi)</a>
+    <a href="bicycles.html" class="w3-bar-item w3-button">VELOSIPĒDI</a>
+    <a href="noteikumi.html" class="w3-bar-item w3-button">Booking & contact</a>
+    <a href="apdrosinasana.html" class="w3-bar-item w3-button">APDROŠINĀŠANA, BUJ </a>
+    <a href="tableexample.html" class="w3-bar-item w3-button">tabulas piemērs</a>
+    <a href="kontaktinformacija.html" class="w3-bar-item w3-button">KONTAKTINFORMĀCIJA</a>
+</div>
+<div class="w3-main" style="margin-left:220px">
+
+    <form action="employees" method="post">
+        <br><br><br>
+        <h2 class="heading"> Darbinieku reģistrācija </h2>
+        <p></P>
+
+        <!--    <a href="http://localhost:8080/courses">Go to Courses</a> <br>-->
+        <!--    <a href="http://localhost:8080/students">Go to Students</a>-->
+        <p><strong>Create Employees:</strong></p>
+        <hr>
+
+        <tr>
+            <td> id</td>
+            <td><input type="text" name="id" placeholder="id numurs"></td>
+        </tr>
+
+        <tr>
+            <td> Darbinieka vārds</td>
+            <td><input type="text", name="name" placeholder="name"></td>
+        </tr>
+
+        <tr>
+            <td> Darbinieka uzvārds</td>
+            <td><input type="text", name="surname" placeholder="surname"></td>
+        </tr>
+        <hr>
+
+        <button type="submit" class="registerbtn col-1-2">Register</button>
+        <br><br>
+        <hr>
+    </form>
+
+
+    <h3>List of all accessories:</h3>   <br>
+
+    <!--https://getbootstrap.com/docs/4.1/content/tables/ -->
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">name</th>
+            <th scope="col">surname</th>
+            <th scope="col">ACTION</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="employee : ${employees}" class="table">
+            <th th:text="${employee.id}" scope="col"></th>
+            <th th:text="${employee.name}" scope="col"></th>
+            <th th:text="${employee.surname}" scope="col"></th>
+
+            <td>
+                <form action="deleteRecord3" method="deleteEmployee">
+                    <input type="hidden" name="id" th:value="${employee.id}">
+                    <button type="submit" class="col-1-2"> delete</button>
+                </form>
+            </td>
+        </tr>
+
+
+        </tbody>
+
+
+        </tbody>
+    </table>
+
+    <hr>
+
+</div>
+</body>
+</html>

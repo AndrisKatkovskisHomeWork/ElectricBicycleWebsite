@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> Electric bicycle website </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="styles/css/style.css">
+    <script src="styles/js/script.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div>
+    <header class="header">
+        <a href="index.html"> <img class="imageHeader" src="images/logo2.png"></a>
+    </header>
+</div>
+
+<div class=" w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left barColor" id="mySidebar">
+    <a href="index.html" class="w3-bar-item w3-button">SĀKUMLAPA(noteikumi)</a>
+    <a href="bicycles.html" class="w3-bar-item w3-button">VELOSIPĒDI</a>
+    <a href="noteikumi.html" class="w3-bar-item w3-button">Booking & contact</a>
+    <a href="apdrosinasana.html" class="w3-bar-item w3-button">APDROŠINĀŠANA, BUJ </a>
+    <a href="tableexample.html" class="w3-bar-item w3-button">tabulas piemērs</a>
+    <a href="kontaktinformacija.html" class="w3-bar-item w3-button">KONTAKTINFORMĀCIJA</a>
+</div>
+
+
+<div class="w3-main" style="margin-left:220px">
+
+    <article class="main">
+        <!-- 		<img src="http://placehold.it/600x300" alt"x"> -->
+        <br><br><br>
+        <h2 class="heading"> Iespējas: </h2>
+
+        <br>
+        <a href="http://localhost:8080/accessories">1. Papildaprīkojuma reģistrācija</a> <br>
+        <a href="http://localhost:8080/bicycles">2. Velosipēda reģistrācija</a> <br>
+        <a href="http://localhost:8080/employees">3. Darbinieka reģistrācija </a> <br>
+
+
+        <form action="">
+            <!--  General -->
+
+            <!--  Details -->
+            <div class="form-group">
+                <h2 class="heading"> vēlamais velosipēda izmantošanas datums </h2>
+                <div class="grid">
+                    <div class="col-1-4 col-1-4-sm">
+                        <div class="controls">
+
+                            <label for="arrive" class="label-date"> Saņemšana</label>
+                            <input type="date" min="01-08-2019" max="01-12-2019" id="arrive" class="floatLabel"
+                                   name="arrive" value="<?php echo date('mm-dd-yyyy'); ?>">
+                            <!--  VALIDĀCIJA, lai nevar pagātnes datumu -->
+
+
+                            <br>
+                            <label for="arrive" class="label-date"> No 8:00 - 18:00</label>
+                            <input type="time" min=8:00 max=16:00>
+
+
+                            <!--
+                            type=datetime - deprecated in favor of datetime-local           	mm-dd-yyyy HH:mm (24 hour clock)
+                            <input type=date step=7 min=2014-09-08> - Monday only
+                            <input type=time min=9:00 max=17:00 step=900> - 15m increments
+                            <input type=week step=2 min=2014-W30>
+                            -->
+                        </div>
+
+
+                    </div>
+                    <div class="col-1-4 col-1-4-sm">
+                        <div class="controls">
+                            <label for="depart" class="label-date"><i class="fa fa-calendar"></i> Nodošana</label>
+                            <input type="date" id="depart" class="floatLabel" name="depart"
+                                   value="<?php echo date('Y-m-d'); ?>"/>
+                            <br>
+                            <label for="arrive" class="label-date"> No 8:00 - 18:00</label>
+                            <input type="time" min=8:00 max=16:00>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid">
+                    <br> <br> <br>
+                    <button type="submit" value="Submit" class="col-1-2">Submit</button>
+                </div>
+            </div> <!-- /.form-group -->
+        </form>
+
+    </article>
+    <br> <br> <br> <br> <br> <br>
+    <footer>
+        © 2019   Design by <a href="https://lv.linkedin.com/in/andris-katkovskis-900327142">Andris Katkovskis</a>
+    </footer>
+</div>
+</body>
+</html>

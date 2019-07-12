@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> Electric bicycle website </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="styles/css/style.css">
+    <script src="styles/js/script.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div>
+    <header class="header">
+        <a href="index.html"> <img class="imageHeader" src="images/logo2.png"></a>
+    </header>
+</div>
+
+<div class=" w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left barColor" id="mySidebar">
+    <a href="index.html" class="w3-bar-item w3-button">SĀKUMLAPA(noteikumi)</a>
+    <a href="bicycles.html" class="w3-bar-item w3-button">VELOSIPĒDI</a>
+    <a href="noteikumi.html" class="w3-bar-item w3-button">Booking & contact</a>
+    <a href="apdrosinasana.html" class="w3-bar-item w3-button">APDROŠINĀŠANA, BUJ </a>
+    <a href="tableexample.html" class="w3-bar-item w3-button">tabulas piemērs</a>
+    <a href="kontaktinformacija.html" class="w3-bar-item w3-button">KONTAKTINFORMĀCIJA</a>
+</div>
+
+
+<div class="w3-main" style="margin-left:220px">
+
+    <h2 class="heading"> KONTAKTINFORMĀCIJA </h2>
+
+    <!-- Start Collapsible section -->
+    <button data-toggle="collapse" data-target="#demo" class="col-1-4">Apskatīt uzdevumu (lietošanas instrukcija)
+    </button>
+    <div id="demo" class="collapse">
+
+        <br><br><br>
+        <p>Uzdevums: Izveidot web sistēmu, kura ļauj veidot uzņēmuma elektrisko velosipēdu lietošanas grafiku
+            darbiniekiem
+            (piesaistīt elektriskos velosipēdus darbiniekiem uz noteiktu laiku).
+        <p>
+
+        <p>Prasības: 2 formas (viens saraksts ar darbiniekiem un elektriskajiem velosipēdiem no cikiem līdz cikiem kurš
+            darbinieks lieto velosipēdu,
+            darbinieku velosipēdu sasaistes forma)
+            <br>- kontrole, lai datums/pulksteņa laiks nevar tikt ievadīts pagātnē;
+            <br>- vienu velosipēdu var rezervēt vienlaicīgi tikai viens darbinieks;
+            <br>- viens darbinieks var vienlaicīgi rezervēt vairākus velosipēdus;
+            <br>- iespēja labot/dzēst ievadītos darbiniekus, velosipēdus.
+        <p>
+
+        <p>Relāciju DB pēc paša izvēles, Uzdevums jārealizē primāri izmantojot Java;
+            <br>Izdarīto iesniegt GitHub</p>
+
+        Ieteicamās tehnoloģijas: Maven, Spring vai cits līdzvērtīgs web freimworks, SQLite vai MySQL.
+        <hr>
+    </div>
+    <br>
+    <!-- End Collapsible section -->
+
+    <div class="w3-container">
+
+
+        <h3>Andris Katkovskis, <a href="https://www.facebook.com/andris.katkovskis.7">facebook, </a>
+            <a href="https://lv.linkedin.com/in/andris-katkovskis-900327142">linkedin</a></h3>
+
+        <p><b>tālr. 26722036</b></p>
+
+        <p>Par autoru: </p>
+        <p> * 10+ gadi: uz klientu vajadzību orientētā apkalpošanā Swedbank</p>
+        <p> * 10+ gadi: krievu valoda mutiski</p>
+        <p> * ,,, </p>
+        <p> * ,,, </p>
+        <p> * dzīvesvietas adrese: </p>
+        <p></p>
+        <p></p>
+
+
+        <br>
+        <hr>
+        <p>
+        <div class="mapouter">
+            <div class="gmap_canvas">
+                <iframe width="500" height="350" id="gmap_canvas"
+                        src="https://maps.google.com/maps?q=r%C4%ABgaProgresa%20iela%203&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                        frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+            </div>
+            <style>.mapouter {
+                position: relative;
+                text-align: right;
+                height: 500px;
+                width: 600px;
+            }
+
+            .gmap_canvas {
+                overflow: hidden;
+                background: none !important;
+                height: 500px;
+                width: 600px;
+            }</style>
+        </div>
+        </p>
+
+
+    </div>
+
+</div>
+
+
+</body>
+</html>

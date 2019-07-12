@@ -34,14 +34,15 @@ public class AccessoryController {
     }
 
     @RequestMapping(value = "/deleteRecord")
-    public void deleteAccessory(HttpServletRequest request) {
+    public String deleteAccessory(HttpServletRequest request) {
         String id = request.getParameter("id");
         this.accessoryService.deleteAccessory(id);
+        return "deleteRecord";
     }
 
     @RequestMapping(value = "/accessories/{id}", method = RequestMethod.PUT)
     public void updateAccessory(@PathVariable String id,
-                                  @RequestBody Accessory accessory) {
+                                @RequestBody Accessory accessory) {
         this.accessoryService.updateAccessory(accessory);
     }
 

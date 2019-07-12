@@ -33,17 +33,17 @@ public class EmployeeController {
         return "employeeList";
     }
 
-    @RequestMapping(value = "/deleteRecord3")
-    public void deleteEmployee(HttpServletRequest request) {
+    @RequestMapping(value = "/deleteEmployeeRecord")
+    public String deleteEmployee(HttpServletRequest request) {
         String id = request.getParameter("id");
         this.employeeService.deleteEmployee(id);
+        return "deleteRecord";
     }
 
     @RequestMapping(value = "/employees/{id}", method = RequestMethod.PUT)
     public void updateEmployee(@PathVariable String id,
-                                  @RequestBody Employee employee) {
+                               @RequestBody Employee employee) {
         this.employeeService.updateEmployee(employee);
     }
-
 
 }

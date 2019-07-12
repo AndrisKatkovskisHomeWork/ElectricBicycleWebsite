@@ -1,48 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title> Electric bicycle website </title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-
-    <link rel="stylesheet" href="styles/css/style.css">
-    <script src="styles/js/script.js"></script>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</head>
+<head th:replace="fragments/headers :: head"></head>
 
 <body>
-<div>
-    <header class="header">
-        <a href="index.html"> <img class="imageHeader" src="images/logo2.png"></a>
-    </header>
-</div>
-
-<div class=" w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left barColor" id="mySidebar">
-    <a href="index.html" class="w3-bar-item w3-button">SĀKUMLAPA(noteikumi)</a>
-    <a href="bicycles.html" class="w3-bar-item w3-button">VELOSIPĒDI</a>
-    <a href="noteikumi.html" class="w3-bar-item w3-button">Booking & contact</a>
-    <a href="apdrosinasana.html" class="w3-bar-item w3-button">APDROŠINĀŠANA, BUJ </a>
-    <a href="tableexample.html" class="w3-bar-item w3-button">tabulas piemērs</a>
-    <a href="kontaktinformacija.html" class="w3-bar-item w3-button">KONTAKTINFORMĀCIJA</a>
-</div>
+<div th:replace="fragments/navigation :: navigation"></div>
 
 <div class="w3-main" style="margin-left:220px">
 
     <form action="bicycles" method="post">
-        <br><br><br>
         <h2 class="heading"> velosipēda reģistrācija </h2>
         <p></P>
 
-        <!--    <a href="http://localhost:8080/courses">Go to Courses</a> <br>-->
-        <!--    <a href="http://localhost:8080/students">Go to Students</a>-->
+        <a href="http://localhost:8080/accessories">1. Papildaprīkojuma reģistrācija</a> <br>
+        <a href="http://localhost:8080/bicycles">2. Velosipēda reģistrācija</a> <br>
+        <a href="http://localhost:8080/employees">3. Darbinieka reģistrācija </a> <br>
+
         <p><strong>Create Bicycles:</strong></p>
         <hr>
 
@@ -73,7 +46,7 @@
 
 
         <button type="submit" class="registerbtn">Register</button>
-        <br><br>
+        <br>
         <hr>
     </form>
 
@@ -98,7 +71,7 @@
                 <th th:text="${bicycle.distance}" scope="col"></th>
 
                 <td>
-                    <form action="deleteRecord2" method="deleteBicycle">
+                    <form action="deleteBicycleRecord" method="deleteBicycle">
                         <input type="hidden" name="id" th:value="${bicycle.id}">
                         <button type="submit" class="col-1-2"> delete</button>
                     </form>

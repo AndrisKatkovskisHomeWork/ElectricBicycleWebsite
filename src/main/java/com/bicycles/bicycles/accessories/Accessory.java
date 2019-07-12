@@ -2,14 +2,6 @@ package com.bicycles.bicycles.accessories;
 
 import javax.persistence.*;
 
-//  {"id":"1","accessoryName":"helmet"}
-//{"id":"2","accessoryName":"water"}
-//{"id":"3","accessoryName":"basket"}
-//{"id":"4","accessoryName":"child seat"}
-//{"id":"5","accessoryName":"trailer"}
-
-//  http://localhost:8080/accessories
-
 @Entity
 public class Accessory {
 

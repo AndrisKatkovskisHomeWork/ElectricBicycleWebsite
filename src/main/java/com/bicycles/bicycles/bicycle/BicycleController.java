@@ -31,10 +31,11 @@ public class BicycleController {
         return "bicycleList";
     }
 
-    @RequestMapping(value = "/deleteRecord2")
-    public void deleteBicycle(HttpServletRequest request) {
+    @RequestMapping(value = "/deleteBicycleRecord")
+    public String deleteBicycle(HttpServletRequest request) {
         String id = request.getParameter("id");
         this.bicycleService.deleteBicycle(id);
+        return "deleteRecord";
     }
 
     @RequestMapping(value = "/bicycles/{id}", method = RequestMethod.PUT)

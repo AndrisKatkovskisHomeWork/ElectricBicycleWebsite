@@ -8,11 +8,8 @@
 
 <div class="w3-main" style="margin-left:220px">
 
-    <form action="employees" method="post">
-        <h2 class="heading"> Darbinieku reģistrācija </h2>
-        <p></P>
-
-        <hr>
+    <form action="days" method="post">
+        <h2 class="heading"> D I E N A S reģistrācija </h2>        <hr>
 
         <tr>
             <td> id</td>
@@ -20,52 +17,46 @@
         </tr>
 
         <tr>
-            <td> Darbinieka vārds</td>
-            <td><input type="text" , name="name" placeholder="name"></td>
-        </tr>
-
-        <tr>
-            <td> Darbinieka uzvārds</td>
-            <td><input type="text" , name="surname" placeholder="surname"></td>
+            <td> dayName</td>
+            <td><input type="date" , name="dayName" min="2019-07-14" max="2019-08-20" placeholder="dayName"></td>
         </tr>
         <hr>
+
+
+
 
         <button type="submit" class="registerbtn col-1-2">Register</button>
         <br>
         <hr>
     </form>
 
-    <h3>List of all accessories:</h3>   <br>
+    <h3>Papildaprīkojuma saraksts:</h3>   <br>
 
     <table class="table">
         <thead class="thead-light">
         <tr>
             <th scope="col">#</th>
-            <th scope="col">name</th>
-            <th scope="col">surname</th>
+            <th scope="col">Diena</th>
             <th scope="col">ACTION</th>
         </tr>
         </thead>
 
         <tbody>
-        <tr th:each="employee : ${employees}" class="table">
-            <th th:text="${employee.id}" scope="col"></th>
-            <th th:text="${employee.name}" scope="col"></th>
-            <th th:text="${employee.surname}" scope="col"></th>
+        <tr th:each="day : ${days}" class="table">
+            <th th:text="${day.id}" scope="col"></th>
+            <th th:text="${day.dayName}" scope="col"></th>
 
             <td>
-                <form action="deleteEmployeeRecord" method="deleteEmployee">
-                    <input type="hidden" name="id" th:value="${employee.id}">
+                <form action="deleteDayRecord" method="deleteDay">
+                    <input type="hidden" name="id" th:value="${day.id}">
                     <button type="submit" class="col-1-2"> delete</button>
                 </form>
             </td>
         </tr>
 
-        </tbody>
 
         </tbody>
     </table>
-
     <hr>
 
 </div>

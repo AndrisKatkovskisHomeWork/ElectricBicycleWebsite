@@ -12,13 +12,7 @@
         <h2 class="heading"> velosipēda reģistrācija </h2>
         <p></P>
 
-        <a href="http://localhost:8080/accessories">1. Papildaprīkojuma reģistrācija</a> <br>
-        <a href="http://localhost:8080/bicycles">2. Velosipēda reģistrācija</a> <br>
-        <a href="http://localhost:8080/employees">3. Darbinieka reģistrācija </a> <br>
-
-        <p><strong>Create Bicycles:</strong></p>
         <hr>
-
 
         <tr>
             <td> id</td>
@@ -41,10 +35,6 @@
         </tr>
         <hr>
 
-
-
-
-
         <button type="submit" class="registerbtn">Register</button>
         <br>
         <hr>
@@ -53,34 +43,33 @@
     <h3>List of all bicycles:</h3>   <br>
 
     <table class="table">
-    <thead class="thead-light">
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">name</th>
-        <th scope="col">weight</th>
-        <th scope="col">distance</th>
-        <th scope="col">ACTION</th>
-    </tr>
-    </thead>
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">name</th>
+            <th scope="col">weight</th>
+            <th scope="col">distance</th>
+            <th scope="col">ACTION</th>
+        </tr>
+        </thead>
 
-            <tbody>
-            <tr th:each="bicycle : ${bicycles}" class="table">
-                <th th:text="${bicycle.id}" scope="col"></th>
-                <th th:text="${bicycle.name}" scope="col"></th>
-                <th th:text="${bicycle.weight}" scope="col"></th>
-                <th th:text="${bicycle.distance}" scope="col"></th>
+        <tbody>
+        <tr th:each="bicycle : ${bicycles}" class="table">
+            <th th:text="${bicycle.id}" scope="col"></th>
+            <th th:text="${bicycle.name}" scope="col"></th>
+            <th th:text="${bicycle.weight}" scope="col"></th>
+            <th th:text="${bicycle.distance}" scope="col"></th>
 
-                <td>
-                    <form action="deleteBicycleRecord" method="deleteBicycle">
-                        <input type="hidden" name="id" th:value="${bicycle.id}">
-                        <button type="submit" class="col-1-2"> delete</button>
-                    </form>
-                </td>
-            </tr>
+            <td>
+                <form action="deleteBicycleRecord" method="deleteBicycle">
+                    <input type="hidden" name="id" th:value="${bicycle.id}">
+                    <button type="submit" class="col-1-2"> delete</button>
+                </form>
+            </td>
+        </tr>
 
-            </tbody>
-</table>
-
+        </tbody>
+    </table>
     <hr>
 
 </div>

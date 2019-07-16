@@ -23,30 +23,46 @@
         <hr>
     </form>
 
+    <!--    S T R A A A D A A A-->
     <form>
-        <h1>Show checkboxes:</h1>
-        <form action="/action_page.php">
-            <input type="checkbox" name="acc1" value="basket"> chekbox basket<br>
-            <input type="checkbox" name="acc2" value="water"> chekbox water <br>
-            <input type="checkbox" name="acc3" value="helment" checked> chekbox helment<br><br>
-            <button type="submit" class="registerbtn col-1-2" value="Submit"> not worked button submit</button>
-        </form>
-        <hr>
+        <h3>Checkboxes ${days}:</h3>
+        <tr>
+            <td>
+                <th:block th:each="day : ${days}">
+                    <input type="checkbox" name="dontknow" th:value="${day.dayName}"/>
+                    <label th:text="${day.dayName}"></label>
+                    <br>
+                </th:block>
+            </td>
+        </tr>
     </form>
+    <hr>
 
-    <form>
-        <div class="col-1-3 col-1-3-sm">
-            <h5>OPTION list (bicycle): </h5>
-            <i class="fa fa-sort"></i>
-            <select>
-                <option value="blank"></option>
-                <option value="option1">bicycle 1</option>
-                <option value="option2">bicycle 2</option>
-            </select>
-        </div>
-        <br>
-        <hr>
-    </form>
+    <!--  strādā, bet tikai iekš http://localhost:8080/accessories -->
+    <!--    <form>-->
+    <!--        <h3>Checkboxes ${accessory.accessoryName}:</h3>-->
+    <!--        <tr>-->
+    <!--            <td>-->
+    <!--                <th:block th:each="accessory : ${accessories}">-->
+    <!--                    <input type="checkbox" name="dontknow" th:value="${accessory.accessoryName}"/>-->
+    <!--                    <label th:text="${accessory.accessoryName}"></label>-->
+    <!--                    <br>-->
+    <!--                </th:block>-->
+    <!--            </td>-->
+    <!--        </tr>-->
+    <!--    </form>-->
+
+    <!--    S T R A A A D A A A-->
+    <select th:field="*{days}">
+        <option th:each="day : ${days}"  th:value="${day.dayName}" th:text="${day.dayName}">
+        </option>
+    </select>
+
+    <!--  strādā, bet tikai iekš http://localhost:8080/accessories -->
+<!--    <select th:field="*{accessories}">-->
+<!--        <option th:each="accessory : ${accessories}"  th:value="${accessory.accessoryName}" th:text="${accessory.accessoryName}">-->
+<!--        </option>-->
+<!--    </select>-->
 
     <h3>Datuma saraksts:</h3>   <br>
 

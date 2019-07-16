@@ -22,7 +22,7 @@ public class AccessoryController {
     }
 
     @RequestMapping(value = "/accessories/{id}", method = RequestMethod.GET)
-    public Accessory getAccessory(@PathVariable String id) {
+    public Accessory getAccessory(@PathVariable int id) {
         return this.accessoryService.getAccessory(id);
     }
 
@@ -33,9 +33,8 @@ public class AccessoryController {
         return "accessoryList";
     }
 
-    @RequestMapping(value = "/deleteRecord")
-    public String deleteAccessory(HttpServletRequest request) {
-        String id = request.getParameter("id");
+    @RequestMapping(value = "/deleteRecord/{id}", method = RequestMethod.GET)
+    public String deleteAccessory(@PathVariable int id) {
         this.accessoryService.deleteAccessory(id);
         return "deleteRecord";
     }

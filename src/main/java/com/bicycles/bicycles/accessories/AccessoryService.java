@@ -18,7 +18,7 @@ public class AccessoryService {
         return accessories;
     }
 
-    public Accessory getAccessory(String id) {
+    public Accessory getAccessory(int id) {
         return accessoryRepository.findById(id).get();
     }
 
@@ -26,7 +26,7 @@ public class AccessoryService {
         accessoryRepository.save(accessory);
     }
 
-    public void deleteAccessory(String id) {
+    public void deleteAccessory(int id) {
         accessoryRepository.deleteById(id);
     }
 

@@ -18,7 +18,7 @@ public class DayService {
         return days;
     }
 
-    public Day getDay(String id) {
+    public Day getDay(int id) {
         return dayRepository.findById(id).get();
     }
 
@@ -26,7 +26,7 @@ public class DayService {
         dayRepository.save(day);
     }
 
-    public void deleteDay(String id) {
+    public void deleteDay(int id) {
         dayRepository.deleteById(id);
     }
 

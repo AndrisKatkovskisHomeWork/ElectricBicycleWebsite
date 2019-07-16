@@ -13,10 +13,10 @@
 
         <hr>
 
-        <tr>
-            <td> id</td>
-            <td><input type="text" name="id" placeholder="id numurs"></td>
-        </tr>
+<!--        <tr>-->
+<!--            <td> id</td>-->
+<!--            <td><input type="text" name="id" placeholder="id numurs"></td>-->
+<!--        </tr>-->
 
         <tr>
             <td> accessoryName</td>
@@ -46,12 +46,13 @@
             <th th:text="${accessory.accessoryName}" scope="col"></th>
 
             <td>
-                <form action="deleteRecord" method="deleteRecord">
+                <form th:action="@{'/deleteRecord/'+ ${accessory.id}}" method="GET">
                     <input type="hidden" name="id" th:value="${accessory.id}">
                     <button type="submit" class="col-1-2"> delete</button>
                 </form>
             </td>
         </tr>
+
 
 
         </tbody>

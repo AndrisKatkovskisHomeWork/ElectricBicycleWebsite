@@ -19,9 +19,10 @@ public class DayController {
         model.addAttribute("days", this.dayService.getAllDays());
         return "dayList";
     }
+    /////////////////////// sakonfigurēt datumu !!!!
 
     @RequestMapping(value = "/days/{id}", method = RequestMethod.GET)
-    public Day getDay(@PathVariable String id) {
+    public Day getDay(@PathVariable int id) {
         return this.dayService.getDay(id);
     }
 
@@ -32,11 +33,11 @@ public class DayController {
         return "dayList";
     }
 
-    @RequestMapping(value = "/deleteDayRecord")
-    public String deleteDay(HttpServletRequest request) {
-        String id = request.getParameter("id");
+    @RequestMapping(value = "/deleteDayRecord/{id}", method = RequestMethod.GET)
+    public String deleteDay(@PathVariable int id) {
         this.dayService.deleteDay(id);
-        return "deleteRecord";
+        return "dayList";
+//        return "deleteRecord";
     }
 
     @RequestMapping(value = "/days/{id}", method = RequestMethod.PUT)

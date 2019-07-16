@@ -1,41 +1,43 @@
 package com.bicycles.bicycles.calendarDay;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Entity
 public class Day {
 
     @Id
-//    @Column(name="id")
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
-    private String dayName;
+    @Column(name="day_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date dayName;
 
     public Day() {
     }
 
-    public Day(String id, String dayName) {
-        this.id = id;
+
+    public Day(Date dayName) {
         this.dayName = dayName;
     }
 
-
-
-
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getDayName() {
+    public Date getDayName() {
         return dayName;
     }
 
-    public void setDayName(String dayName) {
+    public void setDayName(Date dayName) {
         this.dayName = dayName;
     }
 }

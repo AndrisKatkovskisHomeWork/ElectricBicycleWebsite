@@ -1,34 +1,31 @@
 package com.bicycles.bicycles.accessories;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Accessory {
 
+
     @Id
-//    @Column(name="id")
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
+    @NotNull    //// not working !!!!
     private String accessoryName;
 
     public Accessory() {
     }
 
-    public Accessory(String id, String accessoryName) {
-        this.id = id;
+    public Accessory(@NotNull String accessoryName) {
         this.accessoryName = accessoryName;
     }
 
-
-//    public Accessory(String accessoryName) {
-//        this.accessoryName = accessoryName;
-//    }
-
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

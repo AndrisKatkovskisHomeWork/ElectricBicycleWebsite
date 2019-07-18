@@ -39,8 +39,8 @@ public class DayController {
     @RequestMapping(value = "/deleteDayRecord/{id}", method = RequestMethod.GET)
     public String deleteDay(@PathVariable int id) {
         this.dayService.deleteDay(id);
-        return "dayList";
-//        return "deleteRecord";
+        return "redirect:/days";
+
     }
 
     @RequestMapping(value = "/days/{id}", method = RequestMethod.PUT)

@@ -37,7 +37,7 @@ public class EmployeeController {
     public String deleteEmployee(HttpServletRequest request) {
         String id = request.getParameter("id");
         this.employeeService.deleteEmployee(id);
-        return "deleteRecord";
+        return "redirect:/employees";
     }
 
     @RequestMapping(value = "/employees/{id}", method = RequestMethod.PUT)

@@ -6,13 +6,13 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class Accessory {
 
-
     @Id
-    @Column(name="id_acc")
+    @Column(name = "id_acc")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @NotNull    //// not working !!!!
+    @Column(name = "accessory_name")
     private String accessoryName;
 
     public Accessory() {

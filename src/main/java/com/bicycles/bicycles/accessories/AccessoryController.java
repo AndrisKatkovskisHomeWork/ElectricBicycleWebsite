@@ -21,6 +21,18 @@ public class AccessoryController {
         return "accessoryList";
     }
 
+//    @RequestMapping(value = "accessories_desc", method = RequestMethod.GET)
+//    public String getAllAccessoriesDesc(Model model) {
+//        model.addAttribute("accessories", this.accessoryService.getAllAccessories());
+//        return "accessoryList";
+//    }
+
+    @RequestMapping(value = "accessories_asc", method = RequestMethod.GET)
+    public String getAllAccessoriesAsc(Model model) {
+        model.addAttribute("accessories", this.accessoryService.sortAccessoriesASC());
+        return "accessoryList";
+    }
+
     @RequestMapping(value = "/accessories/{id}", method = RequestMethod.GET)
     public Accessory getAccessory(@PathVariable int id) {
         return this.accessoryService.getAccessory(id);
@@ -36,8 +48,9 @@ public class AccessoryController {
     @RequestMapping(value = "/deleteRecord/{id}", method = RequestMethod.GET)
     public String deleteAccessory(@PathVariable int id) {
         this.accessoryService.deleteAccessory(id);
-        return "deleteRecord";
+        return "redirect:/accessories";
     }
+
 
     @RequestMapping(value = "/accessories/{id}", method = RequestMethod.PUT)
     public void updateAccessory(@PathVariable int id,

@@ -1,6 +1,7 @@
 package com.bicycles.bicycles.accessories;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -32,6 +33,12 @@ public class AccessoryService {
 
     public void updateAccessory(Accessory accessory) {
         accessoryRepository.save(accessory);
+    }
+
+    public List<Accessory> sortAccessoriesASC() {
+        List<Accessory> accessories = new ArrayList<>();
+        accessoryRepository.findAll(Sort.by("accessoryName")).forEach(accessories::add);
+        return accessories;
     }
 
 }

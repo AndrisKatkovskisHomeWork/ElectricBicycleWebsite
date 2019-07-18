@@ -35,7 +35,8 @@ public class BicycleController {
     public String deleteBicycle(HttpServletRequest request) {
         String id = request.getParameter("id");
         this.bicycleService.deleteBicycle(id);
-        return "deleteRecord";
+        return "redirect:/bicycles";
+
     }
 
     @RequestMapping(value = "/bicycles/{id}", method = RequestMethod.PUT)

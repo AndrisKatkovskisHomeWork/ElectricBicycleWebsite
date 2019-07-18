@@ -21,7 +21,7 @@ public class Booking {
 //    @JoinColumn(name = "id_day", referencedColumnName = "id_day")
     private Day day;
 
-    @OneToMany
+    @ManyToMany
 //    @JoinColumn(name = "id_acc", referencedColumnName = "id_acc")
     private List<Accessory> accessories;
 

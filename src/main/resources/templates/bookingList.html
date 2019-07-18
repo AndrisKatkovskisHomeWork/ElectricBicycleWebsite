@@ -8,36 +8,39 @@
 
 <div class="w3-main" style="margin-left:220px">
 
-    <form action="index" method="post" th:object="${booking}">
-        <h5> dienas izvēle</h5>
+    <form action="bookingList" method="post" th:object="${booking}">
+
+        <h5> datums</h5>
         <select th:field="*{day}">
             <option th:each="day : ${days}" th:value="${day.id}" th:text="${#dates.format(day.dayName, 'dd-MM-yyy')}">
             </option>
         </select>
 
-        <h5> Velosipēda izvēle</h5>
+        <h5> velosipēds</h5>
         <select th:field="*{bicycle}">
             <option th:each="bicycle : ${bicycles}" th:value="${bicycle.id}" th:text="${bicycle.name}">
             </option>
         </select>
 
+        <h5> papildaprīkojums: accessory</h5>
+        <table>
 
-        <!--        saving all objects from checkbox  thymeleaf  to Object-->
-        <h5> papildaprīkojuma izvēle</h5>
-        <tr>
-            <td>
-                <th:block th:each="ac : ${accessories}">
+            <tr>
 
-                    <input type="checkbox"
-                           th:value="${ac.accessoryName}"
-                          />
+                <td>
+                    <th:block th:each="ac : ${accessories}">
+                        <input type="checkbox"  th:field="*{accessories}" name="accessories"
+                               th:value="${ac.id}"/>
+                        <label th:text="${ac.accessoryName}"></label>
+                        <br>
+                    </th:block>
+
+                </td>
 
 
-                    <label th:text="${ac.accessoryName}"></label>
-                    <br>
-                </th:block>
-            </td>
-        </tr>
+            </tr>
+
+        </table>
 
 
 

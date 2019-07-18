@@ -8,6 +8,7 @@ public class Accessory {
 
 
     @Id
+    @Column(name="id_acc")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
@@ -35,6 +36,14 @@ public class Accessory {
 
     public void setAccessoryName(String accessoryName) {
         this.accessoryName = accessoryName;
+    }
+
+    @Override
+    public String toString() {
+        return "Accessory{" +
+                "id=" + id +
+                ", accessoryName='" + accessoryName + '\'' +
+                '}';
     }
 }
 

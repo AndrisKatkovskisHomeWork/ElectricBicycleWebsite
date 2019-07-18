@@ -14,55 +14,14 @@
 
         <tr>
             <td> dayName</td>
-            <td><input type="date" name="dayName" min="2019-07-14" max="2019-08-20" placeholder="dayName"></td>
+            <td><input type="date" name="dayName" min="2019-07-16" max="2019-08-20" placeholder="dayName"></td>
         </tr>
         <br>
 
-        <button type="submit" class="registerbtn col-1-2">Datuma reģistrācija (bez chekbox)</button>
+        <button type="submit" class="registerbtn col-1-2">Datuma reģistrācija </button>
         <br>
         <hr>
     </form>
-
-    <!--    S T R A A A D A A A-->
-    <form>
-        <h3>Checkboxes ${days}:</h3>
-        <tr>
-            <td>
-                <th:block th:each="day : ${days}">
-                    <input type="checkbox" name="dontknow" th:value="${day.dayName}"/>
-                    <label th:text="${day.dayName}"></label>
-                    <br>
-                </th:block>
-            </td>
-        </tr>
-    </form>
-    <hr>
-
-    <!--  strādā, bet tikai iekš http://localhost:8080/accessories -->
-    <!--    <form>-->
-    <!--        <h3>Checkboxes ${accessory.accessoryName}:</h3>-->
-    <!--        <tr>-->
-    <!--            <td>-->
-    <!--                <th:block th:each="accessory : ${accessories}">-->
-    <!--                    <input type="checkbox" name="dontknow" th:value="${accessory.accessoryName}"/>-->
-    <!--                    <label th:text="${accessory.accessoryName}"></label>-->
-    <!--                    <br>-->
-    <!--                </th:block>-->
-    <!--            </td>-->
-    <!--        </tr>-->
-    <!--    </form>-->
-
-    <!--    S T R A A A D A A A-->
-    <select th:field="*{days}">
-        <option th:each="day : ${days}"  th:value="${day.dayName}" th:text="${day.dayName}">
-        </option>
-    </select>
-
-    <!--  strādā, bet tikai iekš http://localhost:8080/accessories -->
-<!--    <select th:field="*{accessories}">-->
-<!--        <option th:each="accessory : ${accessories}"  th:value="${accessory.accessoryName}" th:text="${accessory.accessoryName}">-->
-<!--        </option>-->
-<!--    </select>-->
 
     <h3>Datuma saraksts:</h3>   <br>
 

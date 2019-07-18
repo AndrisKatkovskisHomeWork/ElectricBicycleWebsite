@@ -4,14 +4,13 @@ body {
     border: 2px solid black;
     padding: 20px 10px 0px 10px;
 
-
     outline-style: solid;
     outline-color: #FF7F26;
-
 
     text-align: center;
     font-family: 'Lato', 'sans-serif';
     font-weight: 400;
+    background-color: lightblue;
 }
 
 .carousel-control-next-icon:after,
@@ -39,7 +38,7 @@ body {
 
 }
 
-                                    .barColor {
+.barColor {
     color: #FF7F26;
 }
 
@@ -214,7 +213,7 @@ codepen.io /chriscoyier/ pen
 
 /
 eGcLw
-	
+
 	$ pad:
 
 10

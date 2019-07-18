@@ -40,7 +40,7 @@ public class AccessoryController {
     }
 
     @RequestMapping(value = "/accessories/{id}", method = RequestMethod.PUT)
-    public void updateAccessory(@PathVariable String id,
+    public void updateAccessory(@PathVariable int id,
                                 @RequestBody Accessory accessory) {
         this.accessoryService.updateAccessory(accessory);
     }

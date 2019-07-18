@@ -5,26 +5,27 @@
 <div th:fragment="navigation">
     <div>
         <header class="header">
-            <a href="index.html"> <img class="imageHeader" src="images/logo2.png"></a><br>
-            <a href="http://localhost:8080/accessories" class="w3-bar-item w3-button">1. Papildaprīkojuma
-                reģistrācija</a>
-            <a href="http://localhost:8080/bicycles" class="w3-bar-item w3-button">2. Velosipēda reģistrācija</a>
-            <a href="http://localhost:8080/employees" class="w3-bar-item w3-button">3. Darbinieka reģistrācija </a>
-            <a href="http://localhost:8080/days" class="w3-bar-item w3-button">4. Day List reģistrācija </a>
-<!--            <a align="right" class="w3-bar-item w3-button" onClick="window.location.reload();"> Page loaded at:-->
-<!--                <strong th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy HH:mm:ss')}"></strong></a>-->
+            <a href="http://localhost:8080/bookingList"> <img class="imageHeader" src="images/logo2.png"></a><br>
+            <a href="http://localhost:8080/accessories" class="w3-bar-item w3-button">1. Papildaprīkojums</a>
+            <a href="http://localhost:8080/bicycles" class="w3-bar-item w3-button">2. Velosipēdi</a>
+            <a href="http://localhost:8080/employees" class="w3-bar-item w3-button">3. Darbinieki </a>
+            <a href="http://localhost:8080/days" class="w3-bar-item w3-button">4. Dienas </a>
+            <a href="http://localhost:8080/bookingList" class="w3-bar-item w3-button">5. REZERVĀCIJA </a>
+
+            <a align="right" class="w3-bar-item w3-button" onClick="window.location.reload();"> lapa atjaunota:
+                <strong th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy HH:mm:ss')}"></strong></a>
 
         </header>
     </div>
 
     <div class=" w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left barColor" id="mySidebar">
-        <a href="index.html" class="w3-bar-item w3-button">SĀKUMLAPA(noteikumi)</a>
+        <a href="http://localhost:8080/bookingList" class="w3-bar-item w3-button">SĀKUMLAPA(noteikumi)</a>
+
         <a href="bicycles.html" class="w3-bar-item w3-button">VELOSIPĒDI</a>
         <a href="noteikumi.html" class="w3-bar-item w3-button">Booking & contact</a>
         <a href="apdrosinasana.html" class="w3-bar-item w3-button">APDROŠINĀŠANA, BUJ </a>
         <a href="kontaktinformacija.html" class="w3-bar-item w3-button">KONTAKTINFORMĀCIJA</a>
 
-        <a href="http://localhost:8080/reservationRecord" class="w3-bar-item w3-button">reservation Record </a>
 
         <!--        <hr>-->
         <!--        <a href="http://localhost:8080/accessories" class="w3-bar-item w3-button">1. Papildaprīkojuma reģistrācija</a>-->

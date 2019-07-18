@@ -1,12 +1,10 @@
 package com.bicycles.bicycles.calendarDay;
 
-
+import com.bicycles.bicycles.accessories.AccessoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class DayController {
@@ -14,18 +12,23 @@ public class DayController {
     @Autowired
     DayService dayService;
 
+    @Autowired
+    AccessoryService accessoryService;
+
     @RequestMapping(value = "days", method = RequestMethod.GET)
     public String getAllDays(Model model) {
         model.addAttribute("days", this.dayService.getAllDays());
+        model.addAttribute("accessories", this.accessoryService.getAllAccessories());
         return "dayList";
     }
-    /////////////////////// sakonfigurēt datumu !!!!
+    /////////////////////// Today = now !! !!!!
 
     @RequestMapping(value = "/days/{id}", method = RequestMethod.GET)
     public Day getDay(@PathVariable int id) {
         return this.dayService.getDay(id);
     }
 
+//    @Validated
     @RequestMapping(value = "/days", method = RequestMethod.POST)
     public String addDay(@ModelAttribute Day day, Model model) {
         this.dayService.addDay(day);

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html>
+<head th:replace="fragments/headers :: head"></head>
+
+<body>
+<div th:replace="fragments/navigation :: navigation"></div>
+
+<div class="w3-main" style="margin-left:220px">
+
+    <form action="index" method="post" th:object="${booking}">
+        <h5> dienas izvēle</h5>
+        <select th:field="*{day}">
+            <option th:each="day : ${days}" th:value="${day.id}" th:text="${#dates.format(day.dayName, 'dd-MM-yyy')}">
+            </option>
+        </select>
+
+        <h5> Velosipēda izvēle</h5>
+        <select th:field="*{bicycle}">
+            <option th:each="bicycle : ${bicycles}" th:value="${bicycle.id}" th:text="${bicycle.name}">
+            </option>
+        </select>
+
+
+        <!--        saving all objects from checkbox  thymeleaf  to Object-->
+        <h5> papildaprīkojuma izvēle</h5>
+        <tr>
+            <td>
+                <th:block th:each="ac : ${accessories}">
+
+                    <input type="checkbox"
+                           th:value="${ac.accessoryName}"
+                          />
+
+
+                    <label th:text="${ac.accessoryName}"></label>
+                    <br>
+                </th:block>
+            </td>
+        </tr>
+
+
+
+
+
+        <br>
+        <button type="submit" class="registerbtn col-1-2"> Apstiprināt Rezervāciju !</button>
+        <br>
+    </form>
+
+    <h6>REZERVĀCIJAS saraksts:</h6>   <br>
+
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">bicycles</th>
+            <th scope="col">days</th>
+            <th scope="col">ACTION</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="b : ${bookingsList}" class="table">
+            <th th:text="${b.id}" scope="col"></th>
+            <th th:text="${#dates.format(b.day.dayName, 'dd-MM-yyy')}" scope="col"></th>
+            <th th:text="${b.bicycle.name}" scope="col"></th>
+
+            <td>
+                <form th:action="@{'/deleteBookingRecord/' + ${b.id}}" method="GET">
+                    <input type="hidden" name="id" th:value="${b.id}">
+                    <button type="submit" class="col-1-2"> delete</button>
+                </form>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+
+
+</div>
+</body>
+</html>

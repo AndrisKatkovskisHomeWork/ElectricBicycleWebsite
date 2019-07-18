@@ -1,5 +1,6 @@
 package com.bicycles.bicycles.employee;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -7,6 +8,7 @@ import javax.persistence.Id;
 public class Employee {
 
     @Id
+    @Column(name="id_employee")
     private String id;
     private String name;
     private String surname;
@@ -47,4 +49,12 @@ public class Employee {
         this.surname = surname;
     }
 
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                '}';
+    }
 }

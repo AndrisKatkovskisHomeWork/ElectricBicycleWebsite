@@ -1,5 +1,6 @@
 package com.bicycles.bicycles.bicycle;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -7,6 +8,7 @@ import javax.persistence.Id;
 public class Bicycle {
 
     @Id
+    @Column(name="id_bicycle")
     private String id;
     private String name;
     private String weight;
@@ -53,5 +55,15 @@ public class Bicycle {
 
     public void setDistance(String distance) {
         this.distance = distance;
+    }
+
+    @Override
+    public String toString() {
+        return "Bicycle{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", weight='" + weight + '\'' +
+                ", distance='" + distance + '\'' +
+                '}';
     }
 }

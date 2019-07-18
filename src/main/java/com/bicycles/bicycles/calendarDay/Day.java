@@ -10,11 +10,12 @@ import java.util.Date;
 public class Day {
 
     @Id
-    @Column(name="day_id")
+    @Column(name="id_day")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name="day_name", unique = true)
     private Date dayName;
 
     public Day() {
@@ -39,6 +40,14 @@ public class Day {
 
     public void setDayName(Date dayName) {
         this.dayName = dayName;
+    }
+
+    @Override
+    public String toString() {
+        return "Day{" +
+                "id=" + id +
+                ", dayName=" + dayName +
+                '}';
     }
 }
 

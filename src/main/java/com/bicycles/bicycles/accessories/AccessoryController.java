@@ -21,15 +21,15 @@ public class AccessoryController {
         return "accessoryList";
     }
 
-//    @RequestMapping(value = "accessories_desc", method = RequestMethod.GET)
-//    public String getAllAccessoriesDesc(Model model) {
-//        model.addAttribute("accessories", this.accessoryService.getAllAccessories());
-//        return "accessoryList";
-//    }
-
     @RequestMapping(value = "accessories_asc", method = RequestMethod.GET)
     public String getAllAccessoriesAsc(Model model) {
         model.addAttribute("accessories", this.accessoryService.sortAccessoriesASC());
+        return "accessoryList";
+    }
+
+    @RequestMapping(value = "accessories_desc", method = RequestMethod.GET)
+    public String getAllAccessoriesDesc(Model model) {
+        model.addAttribute("accessories", this.accessoryService.sortAccessoriesDESC());
         return "accessoryList";
     }
 

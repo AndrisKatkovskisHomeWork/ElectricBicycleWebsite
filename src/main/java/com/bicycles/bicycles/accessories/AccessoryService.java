@@ -41,4 +41,10 @@ public class AccessoryService {
         return accessories;
     }
 
+    public List<Accessory> sortAccessoriesDESC() {
+        List<Accessory> accessories = new ArrayList<>();
+        accessoryRepository.findAll(Sort.by("accessoryName").descending()).forEach(accessories::add);
+        return accessories;
+    }
+
 }

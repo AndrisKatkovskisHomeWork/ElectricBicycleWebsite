@@ -5,17 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-
-// The @Controller is a common annotation which is used to mark a class as Spring MVC Controller while the
-// @RestController is a special controller used in RESTFul web services and the equivalent of @Controller + @ResponseBody.
 @Controller
 public class AccessoryController {
 
     @Autowired
     AccessoryService accessoryService;
-
-    @RequestMapping(value = "accessories", method = RequestMethod.GET)
+    @RequestMapping(value ={ "/", "accessories"}, method = RequestMethod.GET)
     public String getAllAccessories(Model model) {
         model.addAttribute("accessories", this.accessoryService.getAllAccessories());
         return "accessoryList";

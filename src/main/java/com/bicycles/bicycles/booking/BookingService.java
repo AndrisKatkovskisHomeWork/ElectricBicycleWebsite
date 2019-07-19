@@ -1,8 +1,8 @@
 package com.bicycles.bicycles.booking;
 
-import com.bicycles.bicycles.bicycle.Bicycle;
-import com.bicycles.bicycles.bicycle.BicycleRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -36,4 +36,15 @@ public class BookingService {
 //        bookingRepository.save(booking);
 //    }
 
+    public List<Booking> sortBookingsByDataASC() {
+        List<Booking> bookings = new ArrayList<>();
+        bookingRepository.findAll(Sort.by("day")).forEach(bookings::add);
+        return bookings;
+    }
+
+    public List<Booking> sortBookingsByDataDESC() {
+        List<Booking> bookings = new ArrayList<>();
+        bookingRepository.findAll(Sort.by("day").descending()).forEach(bookings::add);
+        return bookings;
+    }
 }

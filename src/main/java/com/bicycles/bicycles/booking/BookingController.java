@@ -25,14 +25,31 @@ public class BookingController {
 
     @RequestMapping(value = "/bookingList", method = RequestMethod.GET)
     public String getAllBookings(Model model) {
-        model.addAttribute("days", this.dayService.getAllDays());
-        model.addAttribute("accessories", this.accessoryService.getAllAccessories());
-        model.addAttribute("bicycles", this.bicycleService.getAllBicycles());
-        model.addAttribute("booking", new Booking());
+        dayAccesoryBicycleServiceAndBooking(model);
         model.addAttribute("bookingsList", bookingService.getAllBookings());
         return "bookingList";
     }
 
+    private void dayAccesoryBicycleServiceAndBooking(Model model) {
+        model.addAttribute("days", this.dayService.getAllDays());
+        model.addAttribute("accessories", this.accessoryService.getAllAccessories());
+        model.addAttribute("bicycles", this.bicycleService.getAllBicycles());
+        model.addAttribute("booking", new Booking());
+    }
+
+    @RequestMapping(value = "/sortBookingsByData_asc", method = RequestMethod.GET)
+    public String getAllAccessoriesAsc(Model model) {
+        dayAccesoryBicycleServiceAndBooking(model);
+        model.addAttribute("bookingsList", this.bookingService.sortBookingsByDataASC());
+        return "bookingList";
+    }
+
+    @RequestMapping(value = "sortBookingsByData_desc", method = RequestMethod.GET)
+    public String getAllAccessoriesDesc(Model model) {
+        dayAccesoryBicycleServiceAndBooking(model);
+        model.addAttribute("bookingsList", this.bookingService.sortBookingsByDataDESC());
+        return "bookingList";
+    }
 
 //        @RequestMapping(value = "/bookingList/{id}", method = RequestMethod.GET)
 //    public Booking getBooking(@PathVariable int id){
@@ -40,17 +57,16 @@ public class BookingController {
 //    }
 
     @RequestMapping(value = "/bookingList", method = RequestMethod.POST)
-    public String addBooking (@ModelAttribute Booking booking, BindingResult bindingResult, Model model){
+    public String addBooking(@ModelAttribute Booking booking, BindingResult bindingResult, Model model) {
         this.bookingService.addBooking(booking);
         return "redirect:/bookingList";
     }
 
     @RequestMapping(value = "/deleteBookingRecord/{id}", method = RequestMethod.GET)
-    public String deleteBooking(@PathVariable int id){
+    public String deleteBooking(@PathVariable int id) {
         this.bookingService.deleteBooking(id);
         return "redirect:/bookingList";
     }
-
 
 
 //    @RequestMapping(value = "/bookingList/{id}", method = RequestMethod.PUT)

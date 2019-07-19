@@ -9,7 +9,7 @@
 <div class="w3-main" style="margin-left:220px">
 
     <form action="bookingList" method="post" th:object="${booking}">
-
+        <h2 class="heading"> Velosipēda reģistrācija </h2>
         <h5> datums</h5>
         <select th:field="*{day}">
             <option th:each="day : ${days}" th:value="${day.id}" th:text="${#dates.format(day.dayName, 'dd-MM-yyy')}">
@@ -45,13 +45,9 @@
         <thead class="thead-light">
         <tr>
             <th scope="col">#</th>
-
             <th scope="col">
-                <a th:href="@{/sortBookingsByData_asc}">  &#x2193; </a>
-                datums
-                <a th:href="@{/sortBookingsByData_desc}"> &#x2191; </a>
-            </th>
-
+                <a th:href="@{/sortBookingsByData_asc}"> &#x2193; </a> datums
+                <a th:href="@{/sortBookingsByData_desc}"> &#x2191; </a></th>
             <th scope="col">velosipēds</th>
             <th scope="col">papildaprīkojums</th>
             <th scope="col">ACTION</th>
@@ -79,7 +75,7 @@
         </tbody>
     </table>
 
-
+    <footer th:replace="fragments/footer :: foot"></footer>
 </div>
 </body>
 </html>

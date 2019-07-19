@@ -1,8 +1,7 @@
 package com.bicycles.bicycles.booking;
 
-import com.bicycles.bicycles.accessories.Accessory;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface BookingRepository extends CrudRepository<Booking, Integer> {
+public interface BookingRepository extends PagingAndSortingRepository<Booking, Integer> {
 
 }

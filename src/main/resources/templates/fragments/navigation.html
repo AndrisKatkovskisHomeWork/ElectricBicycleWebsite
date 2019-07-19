@@ -6,11 +6,11 @@
     <div>
         <header class="header">
             <a href="http://localhost:8080/bookingList"> <img class="imageHeader" src="images/logo2.png"></a><br>
-            <a href="http://localhost:8080/accessories" class="w3-bar-item w3-button">1. Papildaprīkojums</a>
-            <a href="http://localhost:8080/bicycles" class="w3-bar-item w3-button">2. Velosipēdi</a>
-            <a href="http://localhost:8080/employees" class="w3-bar-item w3-button">3. Darbinieki </a>
-            <a href="http://localhost:8080/days" class="w3-bar-item w3-button">4. Dienas </a>
-            <a href="http://localhost:8080/bookingList" class="w3-bar-item w3-button">5. REZERVĀCIJA </a>
+            <a href="http://localhost:8080/accessories" class="w3-bar-item w3-button w3-card barColor">1. Papildaprīkojums</a>
+            <a href="http://localhost:8080/bicycles" class="w3-bar-item w3-button  w3-card barColor">2. Velosipēdi</a>
+            <a href="http://localhost:8080/employees" class="w3-bar-item w3-button w3-card barColor">3. Darbinieki </a>
+            <a href="http://localhost:8080/days" class="w3-bar-item w3-button w3-card  barColor">4. Dienas </a>
+            <a href="http://localhost:8080/bookingList" class="w3-bar-item w3-card w3-button barColor">5. REZERVĀCIJA </a>
 
             <a align="right" class="w3-bar-item w3-button" onClick="window.location.reload();"> lapa atjaunota:
                 <strong th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy HH:mm:ss')}"></strong></a>

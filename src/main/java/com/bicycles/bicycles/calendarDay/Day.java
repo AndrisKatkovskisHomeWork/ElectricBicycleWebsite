@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
-public class Day {
+public class Day implements Comparable<Day>{
 
     @Id
     @Column(name="id_day")
@@ -48,6 +48,14 @@ public class Day {
                 "id=" + id +
                 ", dayName=" + dayName +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Day o) {
+        if(o.getDayName().getTime() == this.dayName.getTime()){
+            return 0;
+        }
+        return o.getDayName().getTime() < this.dayName.getTime() ? -1 : 1;
     }
 }
 

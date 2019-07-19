@@ -39,7 +39,10 @@ body {
 
 .barColor {
     color: #FF7F26;
+    box-shadow: 0 2px 5px 0 rgba(226, 48, 48, 0.3), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
+
+
 
 @import "compass/reset";
 @import "compass/css3";
@@ -175,7 +178,9 @@ $
 pad:
 
 10
-px;
+px
+
+;
 
 .grid {
     background: white;
@@ -193,7 +198,7 @@ px;
 
 [class*='col-'] {
     float: left;
-    padding-right: $pad;
+    padding-right: $ pad;
 }
 
 

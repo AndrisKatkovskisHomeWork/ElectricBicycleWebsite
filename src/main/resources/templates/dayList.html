@@ -14,11 +14,14 @@
 
         <tr>
             <td> dayName</td>
-            <td><input type="date" name="dayName" min="2019-07-16" max="2019-08-20" placeholder="dayName"></td>
+            <td><input type="date"
+                       name="dayName"
+                       th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"
+                       max="2019-08-20" placeholder="dayName"></td>
         </tr>
         <br>
 
-        <button type="submit" class="registerbtn col-1-2">Datuma reģistrācija </button>
+        <button type="submit" class="registerbtn col-1-2">Datuma reģistrācija</button>
         <br>
         <hr>
     </form>

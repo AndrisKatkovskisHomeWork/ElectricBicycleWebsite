@@ -45,9 +45,15 @@
         <thead class="thead-light">
         <tr>
             <th scope="col">#</th>
-            <th scope="col">datums</th>
+
+            <th scope="col">
+                <a th:href="@{/sortBookingsByData_asc}">  &#x2193; </a>
+                datums
+                <a th:href="@{/sortBookingsByData_desc}"> &#x2191; </a>
+            </th>
+
             <th scope="col">velosipēds</th>
-            <th scope="col">papilda</th>
+            <th scope="col">papildaprīkojums</th>
             <th scope="col">ACTION</th>
         </tr>
         </thead>

@@ -1,6 +1,5 @@
-package com.bicycles.bicycles.repository;
+package com.bicycles.bicycles.loginPart.model;
 
-import com.bicycles.bicycles.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package com.bicycles.bicycles.configuration;
+package com.bicycles.bicycles.loginPart.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

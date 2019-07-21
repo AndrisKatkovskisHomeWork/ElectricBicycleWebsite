@@ -21,17 +21,19 @@ public class DayController {
         model.addAttribute("accessories", this.accessoryService.getAllAccessories());
         return "dayList";
     }
-    /////////////////////// Today = now !! !!!!
 
     @RequestMapping(value = "/days/{id}", method = RequestMethod.GET)
     public Day getDay(@PathVariable int id) {
         return this.dayService.getDay(id);
     }
 
-//    @Validated
     @RequestMapping(value = "/days", method = RequestMethod.POST)
     public String addDay(@ModelAttribute Day day, Model model) {
-        this.dayService.addDay(day);
+        boolean isSaved = dayService.addDay(day);
+        if (!isSaved) {
+            model.addAttribute("error", "Kļūda saglabājot datumu!" +
+                    " Lūdzu pārbaudīt, vai datums jau nav reģistrēts!");
+        }
         model.addAttribute("days", this.dayService.getAllDays());
         return "dayList";
     }
@@ -40,12 +42,11 @@ public class DayController {
     public String deleteDay(@PathVariable int id) {
         this.dayService.deleteDay(id);
         return "redirect:/days";
-
     }
 
     @RequestMapping(value = "/days/{id}", method = RequestMethod.PUT)
     public void updateDay(@PathVariable String id,
-                                @RequestBody Day day) {
+                          @RequestBody Day day) {
         this.dayService.updateDay(day);
     }
 

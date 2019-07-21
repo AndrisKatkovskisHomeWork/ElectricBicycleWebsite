@@ -1,4 +1,4 @@
-package com.bicycles.bicycles.model;
+package com.bicycles.bicycles.loginPart.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

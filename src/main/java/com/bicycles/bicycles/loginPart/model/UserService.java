@@ -1,9 +1,5 @@
-package com.bicycles.bicycles.service;
+package com.bicycles.bicycles.loginPart.model;
 
-import com.bicycles.bicycles.model.Role;
-import com.bicycles.bicycles.model.User;
-import com.bicycles.bicycles.repository.RoleRepository;
-import com.bicycles.bicycles.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

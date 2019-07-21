@@ -10,7 +10,8 @@ public class AccessoryController {
 
     @Autowired
     AccessoryService accessoryService;
-    @RequestMapping(value ={ "/", "accessories"}, method = RequestMethod.GET)
+
+    @RequestMapping(value ={"accessories"}, method = RequestMethod.GET)
     public String getAllAccessories(Model model) {
         model.addAttribute("accessories", this.accessoryService.getAllAccessories());
         return "accessoryList";

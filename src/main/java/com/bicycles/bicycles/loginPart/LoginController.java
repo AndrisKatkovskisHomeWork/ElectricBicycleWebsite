@@ -1,7 +1,7 @@
-package com.bicycles.bicycles.controller;
+package com.bicycles.bicycles.loginPart;
 
-import com.bicycles.bicycles.model.User;
-import com.bicycles.bicycles.service.UserService;
+import com.bicycles.bicycles.loginPart.model.User;
+import com.bicycles.bicycles.loginPart.model.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,21 +19,24 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value={"/", "/login"}, method = RequestMethod.GET)
-    public ModelAndView login(){
+    @RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
+ //   public ModelAndView login() {
+    public String login() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
-        return modelAndView;
+//        return modelAndView;
+        return "login";
     }
 
-
-    @RequestMapping(value="/registration", method = RequestMethod.GET)
-    public ModelAndView registration(){
+    @RequestMapping(value = "/registration", method = RequestMethod.GET)
+   public ModelAndView registration() {
+//        public String registration() {
         ModelAndView modelAndView = new ModelAndView();
         User user = new User();
         modelAndView.addObject("user", user);
         modelAndView.setViewName("registration");
-        return modelAndView;
+       return modelAndView;
+//        return "registration";
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
@@ -51,21 +54,20 @@ public class LoginController {
             modelAndView.addObject("user", new User());
 
         }
-            modelAndView.setViewName("registration");
+        modelAndView.setViewName("registration");
 
         return modelAndView;
     }
 
-    @RequestMapping(value="/admin/home", method = RequestMethod.GET)
-    public ModelAndView home(){
+    @RequestMapping(value = "/admin/home", method = RequestMethod.GET)
+    public ModelAndView home() {
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
         modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
-        modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
+        modelAndView.addObject("adminMessage", "Content Available Only for Users with Admin Role");
         modelAndView.setViewName("admin/home");
         return modelAndView;
     }
-
 
 }

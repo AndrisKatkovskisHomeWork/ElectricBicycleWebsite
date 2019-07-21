@@ -22,8 +22,13 @@ public class DayService {
         return dayRepository.findById(id).get();
     }
 
-    public void addDay(Day day) {
-        dayRepository.save(day);
+    public boolean addDay(Day day) {
+        try {
+            dayRepository.save(day);
+        }catch (Exception e){
+            return false;
+        }
+        return true;
     }
 
     public void deleteDay(int id) {

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 
 // The @Controller is a common annotation which is used to mark a class as Spring MVC Controller while the
-// @RestController is a special controller used in RESTFul web services and the equivalent of @Controller + @ResponseBody.
+// @RestController is a special LoginController used in RESTFul web services and the equivalent of @Controller + @ResponseBody.
 @Controller
 public class EmployeeController {
 

@@ -6,9 +6,9 @@
     <title>Admin Page</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
+
 
 <body>
 <div class="container">
@@ -18,6 +18,21 @@
                 type="Submit">Logout
         </button>
     </form>
+
+    <div>
+        <header class="header">
+            <a href="http://localhost:8080/bookingList"> <img class="imageHeader" src="images/logo2.png"></a><br>
+            <a href="http://localhost:8080/accessories" class="w3-bar-item w3-button w3-card barColor">1. Papildaprīkojums</a>
+            <a href="http://localhost:8080/bicycles" class="w3-bar-item w3-button  w3-card barColor">2. Velosipēdi</a>
+            <a href="http://localhost:8080/employees" class="w3-bar-item w3-button w3-card barColor">3. Darbinieki </a>
+            <a href="http://localhost:8080/days" class="w3-bar-item w3-button w3-card  barColor">4. Dienas </a>
+            <a href="http://localhost:8080/bookingList" class="w3-bar-item w3-card w3-button barColor">5. REZERVĀCIJA </a>
+
+            <a align="right" class="w3-bar-item w3-button" onClick="window.location.reload();"> lapa atjaunota:
+                <strong th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy HH:mm:ss')}"></strong></a>
+
+        </header>
+    </div>
 
     <div class="panel-group" style="margin-top:40px">
         <div class="panel panel-primary">

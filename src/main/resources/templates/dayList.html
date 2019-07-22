@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Spring Security Tutorial</title>
+    <title> Electric bicycle website </title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/remaining.css}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -13,27 +13,20 @@
 <body>
 <div th:replace="fragments/navigation :: navigation"></div>
 
-<div class="w3-main" style="margin-left:220px">
+<div style="margin-left:220px">
 
     <form action="days" method="post">
-        <h2 class="heading"> DIENAS reģistrācija </h2>
-        <hr>
-
-        <tr>
-            <td> dayName</td>
-            <td><input type="date"
-                       name="dayName"
-                       th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"
-                       max="2019-08-20" placeholder="dayName"></td>
-        </tr>
-        <br>
-        <span th:text="${error}"></span> <br>
-        <button type="submit" class="registerbtn col-1-2">Datuma reģistrācija</button>
+        <h2 class="heading"> Dienas reģistrācija </h2>
+        Atvērt jaunu datumu <input type="date" name="dayName"
+                                   th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"
+                                   max="2019-08-20" placeholder="dayName">
+        <span th:text="${error}" class="alert alert-danger"></span> <br><br>
+        <button type="submit" class="registerbtn btn btn-md btn-primary">Datuma reģistrācija</button>
         <br>
         <hr>
     </form>
 
-    <h3>Datuma saraksts:</h3>   <br>
+    <h3>Datuma saraksts:</h3> <br>
 
     <table class="table">
         <thead class="thead-light">
@@ -52,7 +45,7 @@
             <td>
                 <form th:action="@{'/deleteDayRecord/' + ${day.id}}" method="GET">
                     <input type="hidden" name="id" th:value="${day.id}">
-                    <button type="submit" class="col-1-2"> delete</button>
+                    <button type="submit" class="registerbtn btn btn-md btn-default"> delete</button>
                 </form>
             </td>
         </tr>

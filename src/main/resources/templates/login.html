@@ -3,8 +3,9 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Spring Security Tutorial</title>
+    <title> Electric bicycle website </title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/remaining.css}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -12,24 +13,17 @@
 
 <body>
 <header class="header">
-    <a href="http://localhost:8080/accessories" class="w3-bar-item w3-button w3-card barColor">1. Papildaprīkojums</a>
-    <a href="http://localhost:8080/bicycles" class="w3-bar-item w3-button  w3-card barColor">2. Velosipēdi</a>
-    <a href="http://localhost:8080/employees" class="w3-bar-item w3-button w3-card barColor">3. Darbinieki </a>
-    <a href="http://localhost:8080/days" class="w3-bar-item w3-button w3-card  barColor">4. Dienas </a>
-    <a href="http://localhost:8080/bookingList" class="w3-bar-item w3-card w3-button barColor">5. REZERVĀCIJA </a>
-
-    <a align="right" class="w3-bar-item w3-button" onClick="window.location.reload();"> lapa atjaunota:
-        <strong th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy HH:mm:ss')}"></strong></a>
+    <a href="http://localhost:8080/bookingList"> <img th:src="@{/images/login2.png}" class="imageHeader"/></a><br>
 </header>
 
-<form th:action="@{/registration}" method="get">
-    <button class="btn btn-md btn-warning btn-block" type="Submit">Go To Registration Page</button>
-</form>
-
 <div class="container">
-    <img th:src="@{/images/login.png}" class="img-responsive center-block" width="300" height="300" alt="Logo"/>
-    <form th:action="@{/login}" method="POST" class="form-signin">
-        <h3 class="form-signin-heading" th:text="Welcome"></h3>
+
+    <form th:action="@{/registration}" method="get">
+        <button class="btn btn-md btn-warning btn-lg" type="Submit">Reģistrēties</button>
+    </form>
+
+    <form th:action="@{/login}" method="POST" class="form-signIn">
+        <h3 class="form-signIn-heading" th:text="Sveicināti"></h3>
         <br/>
 
         <input type="text" id="email" name="email" th:placeholder="Email"
@@ -38,10 +32,10 @@
                id="password" name="password" class="form-control"/> <br/>
 
         <div align="center" th:if="${param.error}">
-            <p style="font-size: 20; color: #FF1C19;">Email or Password invalid, please verify</p>
+            <p style="color: #FF1C19">Email or Password invalid, please verify</p>
         </div>
         <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit"
-                th:text="Login"></button>
+                th:text="Ienākt"></button>
     </form>
 </div>
 </body>

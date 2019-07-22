@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Spring Security Tutorial</title>
+    <title> Electric bicycle website </title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/remaining.css}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -13,21 +13,15 @@
 <body>
 <div th:replace="fragments/navigation :: navigation"></div>
 
-<div class="w3-main" style="margin-left:220px">
+<div class="container" style="margin-left:220px">
 
     <form action="accessories" method="post">
         <h2 class="heading"> Velosipēda papildaprīkojuma reģistrācija </h2>
-        <hr>
-
-        <tr>
-            <td> papildaprīkojums</td>
-            <td><input type="text" , name="accessoryName" placeholder="papildaprīkojums"></td>
-        </tr>
-        <hr>
-
-        <button type="submit" class="registerbtn col-1-2">Reģistrēt jaunu aprīkojumu</button>
+        <input type="text" name="accessoryName" placeholder="nosaukums">
+        <button type="submit" class="registerbtn btn btn-md btn-primary">Reģistrēt jaunu aprīkojumu</button>
         <br>
         <hr>
+
     </form>
 
     <h3>Papildaprīkojuma saraksts:</h3>   <br>
@@ -52,7 +46,7 @@
             <td>
                 <form th:action="@{'/deleteRecord/'+ ${accessory.id}}" method="GET">
                     <input type="hidden" name="id" th:value="${accessory.id}">
-                    <button type="submit" class="col-1-2"> delete</button>
+                    <button type="submit" class="registerbtn btn btn-md btn-default"> delete</button>
                 </form>
             </td>
         </tr>

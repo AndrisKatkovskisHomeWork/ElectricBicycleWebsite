@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Spring Security Tutorial</title>
+    <title> Electric bicycle website </title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/remaining.css}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -13,36 +13,19 @@
 <body>
 <div th:replace="fragments/navigation :: navigation"></div>
 
-<div class="w3-main" style="margin-left:220px">
+<div style="margin-left:220px">
 
     <form action="bicycles" method="post">
         <h2 class="heading">Velosipēda reģistrācija </h2>
-        <p></P>
+        id <input type="text" name="id" placeholder="Factory number (or id)">
 
-        <hr>
+        nosaukums <input type="text" name="name" placeholder="Bicycle name">
 
-        <tr>
-            <td> id</td>
-            <td><input type="text" name="id" placeholder="Factory number (or id)"></td>
-        </tr>
+        svars <input type="text" name="weight" placeholder="Weight">
 
-        <tr>
-            <td> bicycleName</td>
-            <td><input type="text" , name="name" placeholder="Bicycle name"></td>
-        </tr>
+        attālums <input type="text" name="distance" placeholder="Maximum distance">
 
-        <tr>
-            <td> weight</td>
-            <td><input type="text" name="weight" placeholder="Weight"></td>
-        </tr>
-
-        <tr>
-            <td> distance</td>
-            <td><input type="text" name="distance" placeholder="Maximum distance"></td>
-        </tr>
-        <hr>
-
-        <button type="submit" class="registerbtn col-1-2">Reģistrēt jaunu velosipēdu</button>
+        <button type="submit" class="registerbtn btn btn-md btn-primary">Reģistrēt jaunu velosipēdu</button>
         <br>
         <hr>
     </form>
@@ -68,9 +51,9 @@
             <th th:text="${bicycle.distance}" scope="col"></th>
 
             <td>
-                <form action="deleteBicycleRecord" method="deleteBicycle">
+                <form action="deleteBicycleRecord" method="GET">
                     <input type="hidden" name="id" th:value="${bicycle.id}">
-                    <button type="submit" class="col-1-2"> delete</button>
+                    <button type="submit" class="registerbtn btn btn-md btn-default"> delete</button>
                 </form>
             </td>
         </tr>

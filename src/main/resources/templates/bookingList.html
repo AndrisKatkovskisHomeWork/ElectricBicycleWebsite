@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Spring Security Tutorial</title>
+    <title> Electric bicycle website </title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/remaining.css}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -13,36 +13,33 @@
 <body>
 <div th:replace="fragments/navigation :: navigation"></div>
 
-<div class="w3-main" style="margin-left:220px">
+<div style="margin-left:220px">
 
     <form action="bookingList" method="post" th:object="${booking}">
         <h2 class="heading"> Velosipēda reģistrācija </h2>
-        <h5> datums</h5>
-        <select th:field="*{day}">
-            <option th:each="day : ${days}" th:value="${day.id}" th:text="${#dates.format(day.dayName, 'dd-MM-yyy')}">
-            </option>
-        </select>
+        <h5> datums
+            <select th:field="*{day}">
+                <option th:each="day : ${days}" th:value="${day.id}"
+                        th:text="${#dates.format(day.dayName, 'dd-MM-yyy')}">
+                </option>
+            </select>
 
-        <h5> velosipēds</h5>
-        <select th:field="*{bicycle}">kl
-            <option th:each="bicycle : ${bicycles}" th:value="${bicycle.id}" th:text="${bicycle.name}">
-            </option>
-        </select>
+            velosipēds
+            <select th:field="*{bicycle}">
+                <option th:each="bicycle : ${bicycles}" th:value="${bicycle.id}" th:text="${bicycle.name}">
+                </option>
+            </select>
 
-        <h5> papildaprīkojums</h5>
-        <tr>
-            <td>
-                <th:block th:each="ac : ${accessories}">
-                    <input type="checkbox" th:field="*{accessories}" name="accessories"
-                           th:value="${ac.id}"/>
-                    <label th:text="${ac.accessoryName}"></label>
-                    <br>
-                </th:block>
-            </td>
-        </tr>
-        <br>
-
-        <button type="submit" class="registerbtn col-1-2"> Apstiprināt Rezervāciju !</button>
+            papildaprīkojums
+            <th:block th:each="ac : ${accessories}">
+                <input type="checkbox" th:field="*{accessories}" name="accessories"
+                       th:value="${ac.id}"/>
+                <label th:text="${ac.accessoryName}"></label>
+                <br>
+            </th:block>
+            <br>
+        </h5>
+        <button type="submit" class="registerbtn btn btn-md btn-primary"> Apstiprināt Rezervāciju !</button>
         <br>
     </form>
 
@@ -74,7 +71,7 @@
             <td>
                 <form th:action="@{'/deleteBookingRecord/' + ${b.id}}" method="GET">
                     <input type="hidden" name="id" th:value="${b.id}">
-                    <button type="submit" class="col-1-2"> delete</button>
+                    <button type="submit" class="registerbtn btn btn-md btn-default"> delete</button>
                 </form>
             </td>
 

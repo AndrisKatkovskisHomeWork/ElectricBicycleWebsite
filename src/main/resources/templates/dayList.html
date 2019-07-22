@@ -20,7 +20,7 @@
         Atvērt jaunu datumu <input type="date" name="dayName"
                                    th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"
                                    max="2019-08-20" placeholder="dayName">
-        <span th:text="${error}" class="alert alert-danger"></span> <br><br>
+        <span th:if="${error}" th:text="${error}" class="alert alert-danger"></span> <br><br>
         <button type="submit" class="registerbtn btn btn-md btn-primary">Datuma reģistrācija</button>
         <br>
         <hr>

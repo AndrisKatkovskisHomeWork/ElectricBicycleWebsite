@@ -32,9 +32,10 @@
 
             papildaprīkojums
             <th:block th:each="ac : ${accessories}">
-                <input type="checkbox" th:field="*{accessories}" name="accessories"
+                ////  id + "for"  == nepieciesami prieks automatiskām pārbaudēm. (input + iD), isur, kru var mainīt
+                <input id="accessories" type="checkbox" th:field="*{accessories}" name="accessories"
                        th:value="${ac.id}"/>
-                <label th:text="${ac.accessoryName}"></label>
+                <label for="accessories" th:text="${ac.accessoryName}"></label>
                 <br>
             </th:block>
             <br>

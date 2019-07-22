@@ -13,7 +13,7 @@
 
 <body>
 <header class="header">
-<a href="http://localhost:8080/bookingList"> <img th:src="@{/images/login2.png}" class="imageHeader"/></a><br>
+    <a th:href="@{/bookingList}"> <img th:src="@{/images/login2.png}" class="imageHeader"/></a><br>
 </header>
 
 <form th:action="@{/}" method="get">
@@ -64,7 +64,8 @@
 
                 <div class="form-group">
                     <div class="col-sm-9">
-                        <button type="submit" class="btn btn-primary btn-block btn-lg">Reģistrēt jaunu lietotāju</button>
+                        <button type="submit" class="btn btn-primary btn-block btn-lg">Reģistrēt jaunu lietotāju
+                        </button>
                     </div>
                 </div>
 

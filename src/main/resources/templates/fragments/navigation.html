@@ -4,17 +4,20 @@
 
 <div th:fragment="navigation">
     <header class="header">
-        <form th:action="@{/logout}" method="get">
-            <button class="btn btn-md btn-danger" name="registration" type="Submit">Logout</button>
-        </form>
 
-        <a href="http://localhost:8080/bookingList"> <img th:src="@{/images/logo2.png}"/></a><br>
-        <a href="http://localhost:8080/accessories" class="btn btn-md btn-success">1. Papildaprīkojums</a>
-        <a href="http://localhost:8080/bicycles" class="btn btn-md btn-success">2. Velosipēdi</a>
-        <a href="http://localhost:8080/days" class="btn btn-md btn-success">3. Dienas </a>
-        <a href="http://localhost:8080/bookingList" class="btn btn-md btn-success">4. REZERVĀCIJA </a>
+        <a th:href="@{/bookingList}"> <img th:src="@{/images/logo2.png}"/></a><br>
+        <a th:href="@{/accessories}" class="btn btn-md btn-success">1. Papildaprīkojums</a>
+        <a th:href="@{/bicycles}" class="btn btn-md btn-success">2. Velosipēdi</a>
+        <a th:href="@{/days}" class="btn btn-md btn-success">3. Dienas </a>
+        <a th:href="@{/bookingList}" class="btn btn-md btn-success">4. REZERVĀCIJA </a>
         <a align="right" class=" btn btn-md btn-default" onClick="window.location.reload();"> lapa atjaunota:
             <strong th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy HH:mm:ss')}"></strong></a>
+
+        <!--        <form th:action="@{/logout}" method="get">-->
+        <!--            <button class="btn btn-md btn-danger" name="registration" type="Submit">Logout</button>-->
+        <!--        </form>-->
+        <a th:href="@{/logout}" class="logout btn btn-md btn-danger">Logout</a>
+
 
     </header>
 

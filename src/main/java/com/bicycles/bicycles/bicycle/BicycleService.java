@@ -1,6 +1,7 @@
 package com.bicycles.bicycles.bicycle;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -34,4 +35,29 @@ public class BicycleService {
         bicycleRepository.save(bicycle);
     }
 
+    public List<Bicycle> sortBicyclesWeightASC(){
+        List<Bicycle> bicycles = new ArrayList<>();
+        bicycleRepository.findAll(Sort.by("weight")).forEach((bicycles::add));
+        return bicycles;
+    }
+
+    public List<Bicycle> sortBicyclesDistanceASC(){
+        List<Bicycle> bicycles = new ArrayList<>();
+        bicycleRepository.findAll(Sort.by("distance")).forEach((bicycles::add));
+        return bicycles;
+    }
+
+    public List<Bicycle> sortBicyclesNameASC(){
+        List<Bicycle> bicycles = new ArrayList<>();
+        bicycleRepository.findAll(Sort.by("name")).forEach((bicycles::add));
+        return bicycles;
+    }
 }
+
+
+//
+//    public List<Accessory> sortAccessoriesDESC() {
+//        List<Accessory> accessories = new ArrayList<>();
+//        accessoryRepository.findAll(Sort.by("accessoryName").descending()).forEach(accessories::add);
+//        return accessories;
+//    }

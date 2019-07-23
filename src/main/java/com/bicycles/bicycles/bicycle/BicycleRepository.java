@@ -1,7 +1,7 @@
 package com.bicycles.bicycles.bicycle;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface BicycleRepository extends CrudRepository<Bicycle, String> {
+public interface BicycleRepository extends PagingAndSortingRepository<Bicycle, String> {
 
 }

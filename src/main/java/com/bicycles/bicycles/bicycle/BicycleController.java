@@ -19,6 +19,24 @@ public class BicycleController {
         return "bicycleList";
     }
 
+    @RequestMapping(value = "bicyclesWeigh_asc", method = RequestMethod.GET)
+    public String getAllBicyclesWeighASC(Model model) {
+        model.addAttribute("bicycles", this.bicycleService.sortBicyclesWeightASC());
+        return "bicycleList";
+    }
+
+    @RequestMapping(value = "bicyclesDistance_asc", method = RequestMethod.GET)
+    public String getAllBicyclesDistanceASC(Model model) {
+        model.addAttribute("bicycles", this.bicycleService.sortBicyclesDistanceASC());
+        return "bicycleList";
+    }
+
+    @RequestMapping(value = "bicyclesName_asc", method = RequestMethod.GET)
+    public String getAllBicyclesNameASC(Model model) {
+        model.addAttribute("bicycles", this.bicycleService.sortBicyclesNameASC());
+        return "bicycleList";
+    }
+
     @RequestMapping(value = "/bicycles/{id}", method = RequestMethod.GET)
     public Bicycle getBicycle(@PathVariable String id) {
         return this.bicycleService.getBicycle(id);

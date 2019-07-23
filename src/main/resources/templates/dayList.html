@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
     <title> Electric bicycle website </title>
@@ -14,14 +15,13 @@
 
 <div style="margin-left:220px">
 
-    <form action="days" method="post">
+    <form sec:authorize="hasAuthority('ADMIN')" action="days" method="post">
         <h2 class="heading"> Dienas reģistrācija </h2>
-        Atvērt jaunu datumu <input type="date" name="dayName"
+        Atvērt jaunu datumu <input id="date" type="date" name="dayName"
                                    th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"
                                    max="2019-08-20" placeholder="dayName">
-        <span th:if="${error}" th:text="${error}" class="alert alert-danger"></span> <br><br>
         <button type="submit" class="registerbtn btn btn-md btn-primary">Datuma reģistrācija</button>
-        <br>
+        <br> <br> <span th:if="${error}" th:text="${error}" class="alert alert-danger"></span>
         <hr>
     </form>
 

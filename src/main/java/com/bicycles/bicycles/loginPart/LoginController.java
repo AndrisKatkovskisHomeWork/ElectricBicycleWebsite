@@ -48,7 +48,7 @@ public class LoginController {
         }
         if (!bindingResult.hasErrors()) {
             userService.saveUser(user);
-            modelAndView.addObject("successMessage", "User has been registered successfully");
+            modelAndView.addObject("successMessage", "Lietotājs ir veiksmīgi piereģistrēts");
             modelAndView.addObject("user", new User());
 
         }

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
     <title> Electric bicycle website </title>
@@ -13,7 +14,7 @@
 
 <div style="margin-left:220px">
 
-    <form action="bicycles" method="post">
+    <form sec:authorize="hasAuthority('ADMIN')" action="bicycles" method="post">
         <h2 class="heading">Velosipēda reģistrācija </h2>
         id <input type="text" name="id" placeholder="fabrikas Nr">
 

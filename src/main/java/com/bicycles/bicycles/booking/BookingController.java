@@ -58,8 +58,14 @@ public class BookingController {
 
     @RequestMapping(value = "/bookingList", method = RequestMethod.POST)
     public String addBooking(@ModelAttribute Booking booking, BindingResult bindingResult, Model model) {
-        this.bookingService.addBooking(booking);
-        return "redirect:/bookingList";
+        boolean isSaved  = bookingService.addBooking(booking);
+        if(!isSaved) {
+            model.addAttribute("error", "Kļūda saglabājot rezervāciju!" +
+                    " Lūdzu pārbaudīt, vai norādītajā datumā velosipēds jau nav aizņemts!" );
+        }
+        dayAccesoryBicycleServiceAndBooking(model);
+        model.addAttribute("bookingsList", bookingService.getAllBookings());
+        return "bookingList";
     }
 
     @RequestMapping(value = "/deleteBookingRecord/{id}", method = RequestMethod.GET)
@@ -67,6 +73,7 @@ public class BookingController {
         this.bookingService.deleteBooking(id);
         return "redirect:/bookingList";
     }
+
 
 
 //    @RequestMapping(value = "/bookingList/{id}", method = RequestMethod.PUT)

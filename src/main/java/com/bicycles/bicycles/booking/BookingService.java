@@ -20,12 +20,21 @@ public class BookingService {
         return bookings;
     }
 
-//    public Booking getBooking(int id) {
+    //    public Booking getBooking(int id) {
 //        return bookingRepository.findById(id).get();
 //    }
-//
-    public void addBooking(Booking booking) {
-        bookingRepository.save(booking);
+    public boolean addBooking(Booking booking) {
+        List<Booking> byDayAndBicycle = bookingRepository.findByDayAndBicycle(booking.getDay(), booking.getBicycle());
+        try {
+            if (byDayAndBicycle.size() > 0) {
+                return false;
+            } else {
+                bookingRepository.save(booking);
+            }
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public void deleteBooking(int id) {

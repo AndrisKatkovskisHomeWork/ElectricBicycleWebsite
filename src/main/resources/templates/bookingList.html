@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
     <title> Electric bicycle website </title>
@@ -14,7 +15,10 @@
 <div style="margin-left:220px">
 
     <form action="bookingList" method="post" th:object="${booking}">
-        <h2 class="heading"> Velosipēda reģistrācija </h2>
+        <h2 class="heading"> Rezervēt velosipēdu </h2>
+        <span th:if="${error}" th:text="${error}" class="alert alert-danger"> </span> <br><br>
+
+
         <h5> datums
             <select th:field="*{day}">
                 <option th:each="day : ${days}" th:value="${day.id}"
@@ -30,7 +34,7 @@
 
             nepieciešamais papildaprīkojums: <br>
             <th:block th:each="ac : ${accessories}">
-<!--                  id + "for"  == nepieciesami prieks automatiskām pārbaudēm. (input + iD), isur, kru var mainīt-->
+                <!--                  id + "for"  == nepieciesami prieks automatiskām pārbaudēm. (input + iD)-->
                 <input id="accessories" type="checkbox" th:field="*{accessories}" name="accessories"
                        th:value="${ac.id}"/>
                 <label for="accessories" th:text="${ac.accessoryName}"></label>
@@ -42,7 +46,7 @@
         <br>
     </form>
 
-    <h6>REZERVĀCIJAS saraksts:</h6>   <br>
+    <h3>REZERVĀCIJAS saraksts:</h3>   <br>
 
     <table class="table">
         <thead class="thead-light">
@@ -53,6 +57,7 @@
                 <a th:href="@{/sortBookingsByData_desc}"> &#x2191; </a></th>
             <th scope="col">velosipēds</th>
             <th scope="col">papildaprīkojums</th>
+            <th scope="col">Darbinieks</th>
             <th scope="col">ACTION</th>
         </tr>
         </thead>
@@ -67,6 +72,9 @@
                     <p th:text="${ac.accessoryName}"></p>
                 </th:block>
             </th>
+<!--            IEVIETOT DARBINIEKU-->
+            <th th:text="${b.bicycle.name}" scope="col"></th>
+
             <td>
                 <form th:action="@{'/deleteBookingRecord/' + ${b.id}}" method="GET">
                     <input type="hidden" name="id" th:value="${b.id}">

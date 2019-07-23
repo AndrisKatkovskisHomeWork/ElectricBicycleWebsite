@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
     <title> Electric bicycle website </title>
@@ -12,10 +13,10 @@
 <div th:replace="fragments/navigation :: navigation"></div>
 
 <div class="container" style="margin-left:220px">
-
-    <form action="accessories" method="post">
+    <!--    https://github.com/thymeleaf/thymeleaf-extras-springsecurity-->
+    <form sec:authorize="hasAuthority('ADMIN')" action="accessories" method="post">
         <h2 class="heading"> Velosipēda papildaprīkojuma reģistrācija </h2>
-        <input type="text" name="accessoryName" placeholder="nosaukums">
+        <input id="accessoryName" type="text" name="accessoryName" placeholder="nosaukums">
         <button type="submit" class="registerbtn btn btn-md btn-primary">Reģistrēt jaunu aprīkojumu</button>
         <br>
         <hr>

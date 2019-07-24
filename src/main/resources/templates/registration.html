@@ -11,7 +11,7 @@
 
 <body>
 <header class="header">
-    <a th:href="@{/bookingList}"> <img th:src="@{/images/login2.png}" class="imageHeader"/></a><br>
+    <a th:href="@{/bookingList}"> <img th:src="@{/images/login2.png}" class="imageLogin"/></a><br>
 </header>
 
 <form th:action="@{/}" method="get">
@@ -28,24 +28,24 @@
                 <h2>Reģistrācija:</h2>
                 <div class="form-group">
                     <div class="col-sm-9">
+                        <input type="text" th:field="*{name}" placeholder="vārds"
+                        class="form-control"/>
                         <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
                                class="validation-message"></label>
-                        <input type="text" th:field="*{name}" placeholder="Name"
-                               class="form-control"/>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-9">
+                        <input type="text" th:field="*{lastName}"
+                        placeholder="uzvārds" class="form-control"/>
                         <label th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
                                class="validation-message"></label>
-                        <input type="text" th:field="*{lastName}"
-                               placeholder="Last Name" class="form-control"/>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-9">
-                        <input type="text" th:field="*{email}" placeholder="Email"
+                        <input type="text" th:field="*{email}" placeholder="e-pasts"
                                class="form-control"/> <label
                             th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
                             class="validation-message"></label>
@@ -54,7 +54,7 @@
                 <div class="form-group">
                     <div class="col-sm-9">
                         <input type="password" th:field="*{password}"
-                               placeholder="Password" class="form-control"/> <label
+                               placeholder="parole" class="form-control"/> <label
                             th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
                             class="validation-message"></label>
                     </div>

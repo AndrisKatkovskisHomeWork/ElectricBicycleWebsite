@@ -12,7 +12,7 @@
 
 <body>
 <header class="header">
-    <a th:href="@{/bookingList}"> <img th:src="@{/images/login2.png}" class="imageHeader"/></a><br>
+    <a th:href="@{/bookingList}"> <img th:src="@{/images/login2.png}" class="imageLogin"/></a><br>
 </header>
 
 <div class="container">
@@ -25,9 +25,9 @@
         <h3 class="form-signIn-heading" th:text="Sveicināti"></h3>
         <br/>
 
-        <input type="text" id="email" name="email" th:placeholder="Email"
+        <input type="text" id="email" name="email" th:placeholder="e-pasts"
                class="form-control"/> <br/>
-        <input type="password" th:placeholder="Password"
+        <input type="password" th:placeholder="parole"
                id="password" name="password" class="form-control"/> <br/>
 
         <div align="center" th:if="${param.error}">

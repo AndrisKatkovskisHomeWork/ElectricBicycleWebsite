@@ -12,48 +12,48 @@
 <body>
 <div th:replace="fragments/navigation :: navigation"></div>
 
-<div class="container" style="margin-left:220px">
-    <!--    https://github.com/thymeleaf/thymeleaf-extras-springsecurity-->
-    <form sec:authorize="hasAuthority('ADMIN')" action="accessories" method="post">
-        <h2 class="heading"> Velosipēda papildaprīkojuma reģistrācija </h2>
-        <input id="accessoryName" type="text" name="accessoryName" placeholder="nosaukums">
-        <button type="submit" class="registerbtn btn btn-md btn-primary">Reģistrēt jaunu aprīkojumu</button>
-        <br>
-        <hr>
+    <div class="panel-group" style="margin-top:40px">
+        <div class="panel panel-primary">
+            <div sec:authorize="hasAuthority('ADMIN')" class="panel-heading"> Papildaprīkojuma reģistrācija</div>
+            <!--    https://github.com/thymeleaf/thymeleaf-extras-springsecurity-->
+            <form sec:authorize="hasAuthority('ADMIN')" action="accessories" method="post">
+                <!--                <h2 class="heading"> Velosipēda papildaprīkojuma reģistrācija </h2>-->
+                <input id="accessoryName" type="text" name="accessoryName" placeholder="nosaukums">
+                <button type="submit" class="registerbtn btn btn-md btn-warning">Reģistrēt jaunu aprīkojumu</button>
+                <br><br>
+            </form>
+            <div class="panel-heading"> Papildaprīkojuma saraksts:</div>
+            <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">
+                        <a th:href="@{/accessories_asc}"> &#x2193; </a> papildaprīkojums
+                        <a th:href="@{/accessories_desc}"> &#x2191; </a>
+                    </th>
+                    <th sec:authorize="hasAuthority('ADMIN')" scope="col">ACTION</th>
+                </tr>
+                </thead>
 
-    </form>
+                <tbody>
+                <tr th:each="accessory : ${accessories}" class="table">
+                    <th th:text="${accessory.id}" scope="col"></th>
+                    <th th:text="${accessory.accessoryName}" scope="col"></th>
 
-    <h3>Papildaprīkojuma saraksts:</h3>   <br>
+                    <td>
+                        <form sec:authorize="hasAuthority('ADMIN')" th:action="@{'/deleteRecord/'+ ${accessory.id}}"
+                              method="GET">
+                            <input type="hidden" name="id" th:value="${accessory.id}">
+                            <button type="submit" class="registerbtn btn btn-md btn-warning"> delete</button>
+                        </form>
+                    </td>
+                </tr>
 
-    <table class="table">
-        <thead class="thead-light">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">
-                <a th:href="@{/accessories_asc}"> &#x2193; </a> papildaprīkojums
-                <a th:href="@{/accessories_desc}"> &#x2191; </a>
-            </th>
-            <th scope="col">ACTION</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        <tr th:each="accessory : ${accessories}" class="table">
-            <th th:text="${accessory.id}" scope="col"></th>
-            <th th:text="${accessory.accessoryName}" scope="col"></th>
-
-            <td>
-                <form th:action="@{'/deleteRecord/'+ ${accessory.id}}" method="GET">
-                    <input type="hidden" name="id" th:value="${accessory.id}">
-                    <button type="submit" class="registerbtn btn btn-md btn-default"> delete</button>
-                </form>
-            </td>
-        </tr>
-
-        </tbody>
-    </table>
-    <hr>
-    <footer th:replace="fragments/footer :: foot"></footer>
-</div>
+                </tbody>
+            </table>
+            <hr>
+            <footer th:replace="fragments/footer :: foot"></footer>
+        </div>
+    </div>
 </body>
 </html>

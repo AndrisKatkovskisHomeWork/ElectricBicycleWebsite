@@ -9,26 +9,27 @@ body {
 }
 
 .header {
-    padding: 5px 5px 5px 5px;
-    border: 4px Solid #FF7F26;
-    border-radius: 20px;
+    padding: 1px 3px 5px 3px;
+    border: 3px Solid #FF7F26;
+    border-radius: 10px;
+}
+
+.imageLogin {
+    width: 40%;
 }
 
 .imageHeader {
-    width: 40%;
+    width: 100%;
+}
+
+.onPicture{
+    top:80%;
+    left: 30%;
 }
 
 .barColor {
     color: #FF7F26;
     box-shadow: 0 2px 5px 0 rgba(226, 48, 48, 0.3), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-}
-
-* {
-@include box-sizing(border-box);
-}
-
-a {
-    text-decoration: none;
 }
 
 .info-text {

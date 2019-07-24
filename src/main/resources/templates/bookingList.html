@@ -68,8 +68,7 @@
                             <p th:text="${ac.accessoryName}"></p>
                         </th:block>
                     </th>
-                    <!--            IEVIETOT DARBINIEKU-->
-                    <th th:text="${b.bicycle.name}" scope="col"></th>
+                    <th th:text="${b.email}" scope="col"></th>
 
                     <td>
                         <form sec:authorize="hasAuthority('ADMIN')" th:action="@{'/deleteBookingRecord/' + ${b.id}}"

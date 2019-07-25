@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import java.time.LocalDate;
 
 @Controller
 public class DayController {
@@ -17,6 +18,7 @@ public class DayController {
 
     @RequestMapping(value = "days", method = RequestMethod.GET)
     public String getAllDays(Model model) {
+        model.addAttribute("maxDate", LocalDate.now().plusMonths(1));
         model.addAttribute("days", this.dayService.getAllDays());
         model.addAttribute("accessories", this.accessoryService.getAllAccessories());
         return "dayList";

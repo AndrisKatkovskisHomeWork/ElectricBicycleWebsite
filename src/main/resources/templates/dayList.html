@@ -19,11 +19,10 @@
             <form sec:authorize="hasAuthority('ADMIN')" action="days" method="post">
                 Atvērt jaunu datumu <input id="date" type="date" name="dayName"
                                            th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"
-                                           max="2019-08-20" placeholder="dayName">
+                                           th:max="${#temporals.format(maxDate, 'yyyy-MM-dd')}" placeholder="dayName">
                 <button type="submit" class="registerbtn btn btn-md btn-warning">Datuma reģistrācija</button>
                 <br> <br> <span th:if="${error}" th:text="${error}" class="alert alert-danger"></span>
             </form>
-
             <div class="panel-heading">Datumu saraksts:</div>
 
             <table class="table">

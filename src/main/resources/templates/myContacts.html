@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <title> Electric bicycle website </title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/remaining.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+
+<body>
+<div th:replace="fragments/navigation :: navigation"></div>
+
+<div class="panel-group" style="margin-top:40px; margin-left:220px">
+    <div class="panel panel-primary">
+        <div class="panel-heading navig-but"> Kontaktinformācija</div>
+        <div class="location">
+
+            <h3>Andris Katkovskis, <a href="https://www.facebook.com/andris.katkovskis.7">facebook, </a>
+                <a href="https://lv.linkedin.com/in/andris-katkovskis-900327142">linkedin</a></h3>
+
+            <p><b>tālr. 26722036</b></p>
+
+            <p>Par autoru: </p>
+            <p>
+                * {JG} JavaGuru - "introduction to Java" no 01.02.2018 līdz 26.04.2018 <br>
+                * online kursi www.udemy.com <br>
+                * {software development academy} - "Java programmer from scrach" no 21.01.2019 līdz 29.07.2019.</p>
+
+            <p> * 10+ gadi: uz klientu vajadzību orientētā apkalpošanā Swedbank</p>
+            <p></p>
+            <p></p>
+
+
+            <br>
+            <hr>
+            <p>
+            <div class="mapouter">
+                <div class="gmap_canvas">
+                    <iframe width="500" height="350" id="gmap_canvas"
+                            src="https://maps.google.com/maps?q=r%C4%ABgaProgresa%20iela%203&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                            frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                </div>
+                <style>.mapouter {
+                    position: relative;
+                    text-align: right;
+                    height: 500px;
+                    width: 600px;
+                }
+
+                .gmap_canvas {
+                    overflow: hidden;
+                    background: none !important;
+                    height: 500px;
+                    width: 600px;
+                }</style>
+            </div>
+            </p>
+
+
+            <hr>
+            <footer th:replace="fragments/footer :: foot"></footer>
+        </div>
+    </div>
+</div>
+</body>
+</html>

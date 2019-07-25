@@ -28,6 +28,16 @@ public class LoginController {
         return "login";
     }
 
+    @RequestMapping("/insurance")
+    public String insurance() {
+        return "insurance";
+    }
+
+    @RequestMapping("/myContacts")
+    public String myContacts() {
+        return "myContacts";
+    }
+
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
    public ModelAndView registration() {
         ModelAndView modelAndView = new ModelAndView();

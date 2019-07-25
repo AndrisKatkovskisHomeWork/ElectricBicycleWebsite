@@ -62,4 +62,29 @@ public class BookingService {
         bookingRepository.findAll(Sort.by("day").descending()).forEach(bookings::add);
         return bookings;
     }
+
+    public List<Booking> sortBookingsByUsersASC() {
+        List<Booking> bookings = new ArrayList<>();
+        bookingRepository.findAll(Sort.by("email")).forEach(bookings::add);
+        return bookings;
+    }
+
+    public List<Booking> sortBookingsByUsersDESC() {
+        List<Booking> bookings = new ArrayList<>();
+        bookingRepository.findAll(Sort.by("email").descending()).forEach(bookings::add);
+        return bookings;
+    }
+
+    public List<Booking> sortBookingsByBicycleASC() {
+        List<Booking> bookings = new ArrayList<>();
+        bookingRepository.findAll(Sort.by("bicycle")).forEach(bookings::add);
+        return bookings;
+    }
+
+    public List<Booking> sortBookingsByBicycleDESC() {
+        List<Booking> bookings = new ArrayList<>();
+        bookingRepository.findAll(Sort.by("bicycle").descending()).forEach(bookings::add);
+        return bookings;
+    }
+
 }

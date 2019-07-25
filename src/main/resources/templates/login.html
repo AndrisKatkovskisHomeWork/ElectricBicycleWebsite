@@ -11,31 +11,29 @@
 </head>
 
 <body>
-<header class="header">
-    <a th:href="@{/bookingList}"> <img th:src="@{/images/login2.png}" class="imageLogin"/></a><br>
-</header>
+<div th:replace="fragments/navigation :: navigation"></div>
 
 <div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
 
-    <form th:action="@{/registration}" method="get">
-        <button class="btn btn-md btn-warning btn-lg" type="Submit">Reģistrēties</button>
-    </form>
+            <form th:action="@{/login}" method="POST" class="form-signIn">
+                <h3 class="form-signIn-heading" th:text="Sveicināti"></h3>
+                <br/>
 
-    <form th:action="@{/login}" method="POST" class="form-signIn">
-        <h3 class="form-signIn-heading" th:text="Sveicināti"></h3>
-        <br/>
+                <input type="text" id="email" name="email" th:placeholder="e-pasts"
+                       class="form-control"/> <br/>
+                <input type="password" th:placeholder="parole"
+                       id="password" name="password" class="form-control"/> <br/>
 
-        <input type="text" id="email" name="email" th:placeholder="e-pasts"
-               class="form-control"/> <br/>
-        <input type="password" th:placeholder="parole"
-               id="password" name="password" class="form-control"/> <br/>
-
-        <div align="center" th:if="${param.error}">
-            <p style="color: #FF1C19">Email or Password invalid, please verify</p>
+                <div align="center" th:if="${param.error}">
+                    <p style="color: #FF1C19">Nepareizs e-pasts / parole! Lūdzu, mēģiniet vēlreiz!</p>
+                </div>
+                <button class="btn btn-primary btn-block" name="Submit" value="Login" type="Submit"
+                        th:text="Ienākt"></button>
+            </form>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit"
-                th:text="Ienākt"></button>
-    </form>
+    </div>
 </div>
 </body>
 </html>

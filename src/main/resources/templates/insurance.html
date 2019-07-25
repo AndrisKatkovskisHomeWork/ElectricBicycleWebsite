@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <title> Electric bicycle website </title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/remaining.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+<div th:replace="fragments/navigation :: navigation"></div>
+
+<div class="panel-group" style="margin-top:40px; margin-left:220px">
+    <div class="panel panel-primary">
+        <div class="panel-heading navig-but"> Velosipēda apdrošināšana</div>
+        <div class="location">
+            <p> Polisē iekļauta arī velo inventāra un velosipēdista apģērba apdrošināšana</p>
+            <br> Tu vari justies droši un ceļot ar velosipēdu gan Latvijā, gan Lietuvā un Igaunijā
+
+            <p>
+                Velosipēda apdrošināšana (apdrošinājuma summa): 1000 EUR </p>
+
+            <p>
+                Velosipēda zādzība vai laupīšana
+                <br> Velosipēda bojājumi, ceļu satiksmes negadījumā saduroties ar transportlīdzekli vai gājēju
+                <br> Velosipēda inventāra un velosipēdista apģērba bojājums, iestājoties kādam no apdrošinātajiem
+                riskiem
+                <br> Velosipēda bojājumi, pārvadājot to transportlīdzeklī vai uz velo turētāja </p>
+
+            <p>
+                Velobraucēja nelaimes gadījumi (apdrošinājuma summa) 1000 EUR:
+                <br> - Ārstēšanās izdevumi
+                <br> - Invaliditāte
+                <br> - Nāve </p>
+
+            <p>
+                Velobraucēja civiltiesiskā atbildība (apdrošinājuma summa) 1000 EUR </p>
+
+            <p>
+                Citas personas dzīvībai vai veselībai nodarītais kaitējums
+                <br>Citas personas mantai nodarītais bojājums </p>
+
+            <p>
+                PAŠRISKI
+                <br> Velosipēda un velobraucēja CTA apdrošināšanai: 45 EUR
+                <br>Velobraucēja nelaimes gadījumu apdrošināšanai: Bez pašriska </p>
+
+            <a href="https://www.if.lv/privatpersonam/apdrosinasana/velo-apdrosinasana" target="_blank">
+                Vairāk informācijas / pieteikt gadījumu </a>
+            <hr>
+            <footer th:replace="fragments/footer :: foot"></footer>
+        </div>
+    </div>
+</div>
+</body>
+</html>

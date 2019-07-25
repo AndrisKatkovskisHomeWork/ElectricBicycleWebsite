@@ -51,6 +51,35 @@ public class BookingController {
         return "bookingList";
     }
 
+    @RequestMapping(value = "/sortBookingsByUsers_asc", method = RequestMethod.GET)
+    public String getAllUsersAsc(Model model) {
+        dayAccesoryBicycleServiceAndBooking(model);
+        model.addAttribute("bookingsList", this.bookingService.sortBookingsByUsersASC());
+        return "bookingList";
+    }
+
+    @RequestMapping(value = "sortBookingsByUsers_desc", method = RequestMethod.GET)
+    public String getAllUsersDesc(Model model) {
+        dayAccesoryBicycleServiceAndBooking(model);
+        model.addAttribute("bookingsList", this.bookingService.sortBookingsByUsersDESC());
+        return "bookingList";
+    }
+
+    @RequestMapping(value = "/sortBookingsByBicycle_asc", method = RequestMethod.GET)
+    public String getAllBicycleAsc(Model model) {
+        dayAccesoryBicycleServiceAndBooking(model);
+        model.addAttribute("bookingsList", this.bookingService.sortBookingsByBicycleASC());
+        return "bookingList";
+    }
+
+    @RequestMapping(value = "sortBookingsByBicycle_desc", method = RequestMethod.GET)
+    public String getAllBicycleDesc(Model model) {
+        dayAccesoryBicycleServiceAndBooking(model);
+        model.addAttribute("bookingsList", this.bookingService.sortBookingsByBicycleDESC());
+        return "bookingList";
+    }
+
+
 //        @RequestMapping(value = "/bookingList/{id}", method = RequestMethod.GET)
 //    public Booking getBooking(@PathVariable int id){
 //        return this.bookingService.getBooking(id);

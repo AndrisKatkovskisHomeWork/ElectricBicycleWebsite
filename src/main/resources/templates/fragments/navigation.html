@@ -6,18 +6,28 @@
 <div th:fragment="navigation">
     <header class="header">
 
-        <a th:href="@{/bookingList}"> <img th:src="@{/images/logo2.png}" class="imageHeader"/></a><br>
-        <a th:href="@{/accessories}" class="btn btn-md btn-success">Papildaprīkojums</a>
-        <a th:href="@{/bicycles}" class="btn btn-md btn-success">Velosipēdi</a>
-        <a th:href="@{/days}" class="btn btn-md btn-success">Dienas </a>
-        <a th:href="@{/bookingList}" class="btn btn-md btn-success">REZERVĀCIJA </a>
-        <a align="right" class=" btn btn-md btn-default" onClick="window.location.reload();"> lapa atjaunota:
+        <a th:href="@{/bookingList}"> <img sec:authorize="isAuthenticated()" th:src="@{/images/logo2.png}"
+                                class="imageHeader"/></a><br>
+        <a th:href="@{/}"> <img sec:authorize="!isAuthenticated()" th:src="@{/images/login2.png}"
+                                class="imageLogin"/></a><br>
+
+        <a th:href="@{/insurance}" class="btn btn-md btn-info">Apdrošināšana</a>
+        <a th:href="@{/myContacts}" class="btn btn-md btn-info">Kontaktinformācija</a>
+        <a sec:authorize="isAuthenticated()" th:href="@{/accessories}"
+           class="btn btn-md btn-success">Papildaprīkojums</a>
+        <a sec:authorize="isAuthenticated()" th:href="@{/bicycles}" class="btn btn-md btn-success">Velosipēdi</a>
+        <a sec:authorize="isAuthenticated()" th:href="@{/days}" class="btn btn-md btn-success">Dienas </a>
+        <a sec:authorize="isAuthenticated()" th:href="@{/bookingList}" class="btn btn-md btn-success">REZERVĀCIJA </a>
+
+        <a sec:authorize="isAuthenticated()" th:href="@{/logout}" class="btn-right btn btn-md btn-danger">Logout</a>
+        <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/admin/home}" class="btn-right btn btn-md btn-warning">
+            admin </a>
+
+        <a sec:authorize="!isAuthenticated()" th:href="@{/registration}" class="btn-right btn btn-md btn-warning">Reģistrēties</a>
+        <a sec:authorize="!isAuthenticated()" th:href="@{/}" class="btn-right btn btn-md btn-warning"> Ienākt</a>
+
+        <a align="right" class="btn-right btn btn-md btn-default" onClick="window.location.reload();"> lapa atjaunota:
             <strong th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy HH:mm:ss')}"></strong></a>
-
-        <a th:href="@{/logout}" class="logout btn btn-md btn-danger">Logout</a>
-        <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/admin/home}" class="logout btn btn-md btn-warning"> admin </a>
-
-
     </header>
 
 </div>

@@ -36,7 +36,7 @@ public class DayController {
             model.addAttribute("errorAddDay", "Kļūda saglabājot datumu!" +
                     " Lūdzu pārbaudīt, vai datums jau nav reģistrēts!");
         }
-        model.addAttribute("days", this.dayService.getAllDays());
+        setDayListModel(model);
         return "dayList";
     }
 

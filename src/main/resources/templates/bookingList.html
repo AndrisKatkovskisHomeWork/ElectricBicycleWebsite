@@ -23,13 +23,13 @@
                 </option>
             </select>
 
-            velosipēds
+            , velosipēds
             <select th:field="*{bicycle}">
                 <option th:each="bicycle : ${bicycles}" th:value="${bicycle.id}" th:text="${bicycle.name}">
                 </option>
             </select>
 
-            nepieciešamais papildaprīkojums: <br>
+            , <br> papildaprīkojums: <br>
             <th:block th:each="ac : ${accessories}">
                 <!--                  id + "for"  == nepieciesami prieks automatiskām pārbaudēm. (input + iD)-->
                 <input id="accessories" type="checkbox" th:field="*{accessories}" name="accessories"

@@ -6,54 +6,78 @@
 <head>
     <title> Electric bicycle website </title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/remaining.css}"/>
+    <script th:src="@{/js/script.js}"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
 <body>
 <div th:replace="fragments/navigation :: navigation"></div>
 
-    <div class="panel-group" style="margin-top:40px">
-        <div class="panel panel-primary">
-            <div sec:authorize="hasAuthority('ADMIN')" class="panel-heading"> Papildaprīkojuma reģistrācija</div>
-            <!--    https://github.com/thymeleaf/thymeleaf-extras-springsecurity-->
-            <form sec:authorize="hasAuthority('ADMIN')" action="accessories" method="post">
-                <!--                <h2 class="heading"> Velosipēda papildaprīkojuma reģistrācija </h2>-->
-                <input id="accessoryName" type="text" name="accessoryName" placeholder="nosaukums">
-                <button type="submit" class="registerbtn btn btn-md btn-warning">Reģistrēt jaunu aprīkojumu</button>
-                <br><br>
-            </form>
-            <div class="panel-heading"> Papildaprīkojuma saraksts:</div>
-            <table class="table">
-                <thead class="thead-light">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">
-                        <a th:href="@{/accessories_asc}"> &#x2193; </a> papildaprīkojums
-                        <a th:href="@{/accessories_desc}"> &#x2191; </a>
-                    </th>
-                    <th sec:authorize="hasAuthority('ADMIN')" scope="col">ACTION</th>
-                </tr>
-                </thead>
+<div class="panel-group" style="margin-top:40px">
+    <div class="panel panel-primary">
+        <div sec:authorize="hasAuthority('ADMIN')" class="panel-heading"> Papildaprīkojuma reģistrācija</div>
+        <!--    https://github.com/thymeleaf/thymeleaf-extras-springsecurity-->
+        <form sec:authorize="hasAuthority('ADMIN')" action="accessories" method="POST">
+            <input id="accessoryName" type="text" name="accessoryName" placeholder="nosaukums">
+            <button type="submit" class="registerbtn btn btn-md btn-warning">Reģistrēt jaunu aprīkojumu</button>
+            <br><br>
+        </form>
+        <span th:if="${errorDeleteAccessory}" th:text="${errorDeleteAccessory}" class="alert alert-danger"></span>
+        <div class="panel-heading"> Papildaprīkojuma saraksts:</div>
+        <table class="table">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">
+                    <a th:href="@{/accessories_asc}"> &#x2193; </a> papildaprīkojums
+                    <a th:href="@{/accessories_desc}"> &#x2191; </a>
+                </th>
+                <th colspan="2" sec:authorize="hasAuthority('ADMIN')" scope="col" style="text-align:center">ACTION</th>
+            </tr>
+            </thead>
 
-                <tbody>
-                <tr th:each="accessory : ${accessories}" class="table">
-                    <th th:text="${accessory.id}" scope="col"></th>
-                    <th th:text="${accessory.accessoryName}" scope="col"></th>
+            <tbody>
+            <tr th:each="accessory : ${accessories}" class="table">
+                <th th:text="${accessory.id}" scope="col"></th>
+                <th th:text="${accessory.accessoryName}" scope="col"></th>
 
-                    <td>
-                        <form sec:authorize="hasAuthority('ADMIN')" th:action="@{'/deleteRecord/'+ ${accessory.id}}"
-                              method="GET">
-                            <input type="hidden" name="id" th:value="${accessory.id}">
-                            <button type="submit" class="registerbtn btn btn-md btn-warning"> delete</button>
-                        </form>
-                    </td>
-                </tr>
+                <td sec:authorize="hasAuthority('ADMIN')">
+                    <button th:onclick="'updateFunctionAccessory(' + ${accessory.id}+ ')'"
+                            class="registerbtn btn btn-md btn-warning">update
+                    </button>
+                    <form method="post"
+                          th:action="@{'/accessories/'+ ${accessory.id}}"
+                          th:object="${accessory}"
+                          th:id="'myDIV' + ${accessory.id}">
+                        <input th:id="'accessoryName' + ${accessory.id}"
+                               type="text"
+                               name="accessoryName"
+                               style="display: none;"
+                               th:value="${accessory.accessoryName}">
 
-                </tbody>
-            </table>
-            <hr>
-            <footer th:replace="fragments/footer :: foot"></footer>
-        </div>
+                        <input type="hidden" name="accessoryName">
+                        <button th:id="'accessoryNameSave' + ${accessory.id}"
+                                type="submit"
+                                style="display: none;"
+                                class="registerbtn btn btn-md btn-danger"> save
+                        </button>
+                    </form>
+                </td>
+
+                <td>
+                    <form sec:authorize="hasAuthority('ADMIN')"
+                          th:action="@{'/deleteAccessoryRecord/'+ ${accessory.id}}"
+                          method="GET">
+                        <input type="hidden" name="id" th:value="${accessory.id}">
+                        <button type="submit" class="registerbtn btn btn-md btn-danger"> delete</button>
+                    </form>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+        <footer th:replace="fragments/footer :: foot"></footer>
     </div>
+</div>
 </body>
 </html>

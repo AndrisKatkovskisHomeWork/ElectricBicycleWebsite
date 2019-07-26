@@ -27,8 +27,13 @@ public class AccessoryService {
         accessoryRepository.save(accessory);
     }
 
-    public void deleteAccessory(int id) {
-        accessoryRepository.deleteById(id);
+    public boolean deleteAccessory(int id) {
+        try {
+            accessoryRepository.deleteById(id);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
     }
 
     public void updateAccessory(Accessory accessory) {

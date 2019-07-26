@@ -11,7 +11,7 @@ public class AccessoryController {
     @Autowired
     AccessoryService accessoryService;
 
-    @RequestMapping(value ={"accessories"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"accessories"}, method = RequestMethod.GET)
     public String getAllAccessories(Model model) {
         model.addAttribute("accessories", this.accessoryService.getAllAccessories());
         return "accessoryList";
@@ -29,9 +29,11 @@ public class AccessoryController {
         return "accessoryList";
     }
 
-    @RequestMapping(value = "/accessories/{id}", method = RequestMethod.GET)
-    public Accessory getAccessory(@PathVariable int id) {
-        return this.accessoryService.getAccessory(id);
+    @RequestMapping(value = "/accessories/{id}", method = RequestMethod.POST)
+    public String getAccessory(@ModelAttribute Accessory accessory, @PathVariable int id) {
+
+        this.accessoryService.updateAccessory(accessory);
+        return "redirect:/accessories";
     }
 
     @RequestMapping(value = "/accessories", method = RequestMethod.POST)
@@ -41,10 +43,17 @@ public class AccessoryController {
         return "accessoryList";
     }
 
-    @RequestMapping(value = "/deleteRecord/{id}", method = RequestMethod.GET)
-    public String deleteAccessory(@PathVariable int id) {
-        this.accessoryService.deleteAccessory(id);
-        return "redirect:/accessories";
+    @RequestMapping(value = "/deleteAccessoryRecord/{id}", method = RequestMethod.GET)
+    public String deleteAccessory(@PathVariable int id, Model model) {
+        boolean isDeleted = accessoryService.deleteAccessory(id);
+        if(!isDeleted) {
+            model.addAttribute("errorDeleteAccessory", "Kļūda dzēšot aprīkojumu! Aprīkojumu izdzēst iespējams, " +
+                    "ja tas nav izmantots rezervācijā. Lūdzu vispirms dzēst visas rezervācijas ar šo aprīkojumu!");
+        }
+            this.accessoryService.deleteAccessory(id);
+        model.addAttribute("accessories", this.accessoryService.getAllAccessories());
+
+        return "accessoryList";
     }
 
 

@@ -32,7 +32,6 @@ public class BicycleService {
         try {
             bicycleRepository.deleteById(id);
         } catch (Exception e) {
-            System.out.println("errorrorrorr");
             return false;
         }
         return true;

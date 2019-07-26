@@ -30,9 +30,13 @@ public class DayService {
         }
         return true;
     }
-
-    public void deleteDay(int id) {
-        dayRepository.deleteById(id);
+    public boolean deleteDay(int id) {
+        try {
+            dayRepository.deleteById(id);
+        } catch (Exception e){
+            return false;
+        }
+        return true;
     }
 
     public void updateDay(Day day) {

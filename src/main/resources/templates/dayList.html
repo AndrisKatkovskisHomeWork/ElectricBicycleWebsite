@@ -21,7 +21,8 @@
                                            th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"
                                            th:max="${#temporals.format(maxDate, 'yyyy-MM-dd')}" placeholder="dayName">
                 <button type="submit" class="registerbtn btn btn-md btn-warning">Datuma reģistrācija</button>
-                <br> <br> <span th:if="${error}" th:text="${error}" class="alert alert-danger"></span>
+                <br> <br> <span th:if="${errorAddDay}" th:text="${errorAddDay}" class="alert alert-danger"></span>
+                <span th:if="${errorDelete}" th:text="${errorDelete}" class="alert alert-danger"></span>
             </form>
             <div class="panel-heading">Datumu saraksts:</div>
 
@@ -51,7 +52,6 @@
 
                 </tbody>
             </table>
-            <hr>
             <footer th:replace="fragments/footer :: foot"></footer>
     </div>
 </div>

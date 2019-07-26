@@ -20,7 +20,7 @@ public class LoginController {
     private UserService userService;
 
     @RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
- //   public ModelAndView login() {
+    //   public ModelAndView login() {
     public String login() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
@@ -33,18 +33,24 @@ public class LoginController {
         return "insurance";
     }
 
+    @RequestMapping("/access-denied")
+    public String accessDenied() {
+        return "access-denied";
+    }
+
+
     @RequestMapping("/myContacts")
     public String myContacts() {
         return "myContacts";
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
-   public ModelAndView registration() {
+    public ModelAndView registration() {
         ModelAndView modelAndView = new ModelAndView();
         User user = new User();
         modelAndView.addObject("user", user);
         modelAndView.setViewName("registration");
-       return modelAndView;
+        return modelAndView;
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)

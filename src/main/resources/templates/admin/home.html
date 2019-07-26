@@ -19,13 +19,45 @@
             <div class="panel-heading">
                 <span th:utext="${userName}"></span>
             </div>
-            <div class="panel-body">
-                <img th:src="@{/images/beer.jpg}" class="img-responsive center-block" width="400" height="400"
-                     alt="Beer"/>
-            </div>
+
             <p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
+
+            <div class="panel-heading navig-but"> Piedāvātās iespējas</div>
+            <div class="location">
+
+                <p> Pogas krāsa norāda nepieciešamās tiesības: <br>
+                    <button class="registerbtn btn btn-md btn-info">ikviens / lietotājs / Admins</button>
+                    <button class="registerbtn btn btn-md btn-success"> lietotājs / Admins</button>
+                    <button class="registerbtn btn btn-md btn-warning"> Admins</button>
+                    <button class="registerbtn btn btn-md btn-danger"> Admins</button>
+                </p>
+                <hr>
+                <p>
+                    <button class="registerbtn btn btn-md btn-info">informatīva poga</button>
+                    ļauj tikai apskatīt informāciju statiskajās mājaslapās.
+                </p>
+
+                <p>
+                    <button class="registerbtn btn btn-md btn-success"> lietotāja poga</button>
+                    ļauj apskatīt visus izveidotos sarakstus un veikt velosipēda rezervāciju.
+                </p>
+                <button class="registerbtn btn btn-md btn-warning"> admina poga</button>
+                ļauj pievienot, dzēst, labot izveidotos ierakstus.
+
+                <p>
+
+                </p>
+                <p> Katras dienas rītā Adminam ir pienākums:
+                    <br> izdzēst rezervācijas, kas vecākas par šodienu;
+                    <br> izdzēst datumu, kas vecāks par šodienu;
+                </p>
+
+
+            </div>
+            <footer th:replace="fragments/footer :: foot"></footer>
         </div>
     </div>
+</div>
 
 </div>
 </body>

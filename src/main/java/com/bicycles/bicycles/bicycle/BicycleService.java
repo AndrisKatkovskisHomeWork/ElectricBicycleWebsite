@@ -27,22 +27,16 @@ public class BicycleService {
         bicycleRepository.save(bicycle);
     }
 
-//    public void deleteBicycle(String id) {
-//        bicycleRepository.deleteById(id);
-//    }
 
-    public void deleteBicycle(String id) {
-        bicycleRepository.deleteById(id);
+    public boolean deleteBicycle(String id){
+        try {
+            bicycleRepository.deleteById(id);
+        } catch (Exception e) {
+            System.out.println("errorrorrorr");
+            return false;
+        }
+        return true;
     }
-
-//    @RequestMapping(value = "/deleteBicycleRecord")
-//    public String deleteBicycle(HttpServletRequest request) {
-//        String id = request.getParameter("id");
-//        this.bicycleService.deleteBicycle(id);
-//        return "redirect:/bicycles";
-//
-//    }
-
 
 
     public void updateBicycle(Bicycle bicycle) {

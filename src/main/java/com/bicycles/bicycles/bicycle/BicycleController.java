@@ -49,12 +49,16 @@ public class BicycleController {
         return "bicycleList";
     }
 
-    @RequestMapping(value = "/deleteBicycleRecord")
-    public String deleteBicycle(HttpServletRequest request) {
-        String id = request.getParameter("id");
+    @RequestMapping(value = "/deleteBicycleRecord{id}", method = RequestMethod.GET)
+    public String deleteBicycle(@PathVariable String id, Model model) {
+        boolean isDeleted = bicycleService.deleteBicycle(id);
+        if (!isDeleted) {
+            model.addAttribute("errorDeleteBicycle", "Kļūda dzēšot velosipēdu! Velosipēdu izdzēst iespējams, " +
+                    "ja tas nav izmantots rezervācijā. Lūdzu vispirms dzēst visas rezervācijas ar šo velosipēdu!");
+        }
         this.bicycleService.deleteBicycle(id);
-        return "redirect:/bicycles";
-
+        model.addAttribute("bicycles", this.bicycleService.getAllBicycles());
+        return "bicycleList";
     }
 
     @RequestMapping(value = "/bicycles/{id}", method = RequestMethod.PUT)

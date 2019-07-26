@@ -12,59 +12,60 @@
 <body>
 <div th:replace="fragments/navigation :: navigation"></div>
 
-    <div class="panel-group" style="margin-top:40px">
-        <div class="panel panel-primary">
-            <div sec:authorize="hasAuthority('ADMIN')" class="panel-heading"> Velosipēda reģistrācija</div>
-            <form sec:authorize="hasAuthority('ADMIN')" action="bicycles" method="post">
-                id <input type="text" name="id" placeholder="fabrikas Nr">
-                nosaukums <input id="name" type="text" name="name" placeholder="nosaukums">
-                svars <input type="text" name="weight" placeholder="svars">
-                attālums <input type="text" name="distance" placeholder="attālums">
+<div class="panel-group" style="margin-top:40px">
+    <div class="panel panel-primary">
+        <div sec:authorize="hasAuthority('ADMIN')" class="panel-heading"> Velosipēda reģistrācija</div>
+        <form sec:authorize="hasAuthority('ADMIN')" action="bicycles" method="post">
+            id <input type="text" name="id" placeholder="fabrikas Nr">
+            nosaukums <input id="name" type="text" name="name" placeholder="nosaukums">
+            svars <input type="text" name="weight" placeholder="svars">
+            attālums <input type="text" name="distance" placeholder="attālums">
 
-                <button type="submit" class="registerbtn btn btn-md btn-warning">Reģistrēt jaunu velosipēdu</button>
-                <br><br>
-            </form>
-            <div class="panel-heading"> Velosipēdu saraksts:</div>
+            <button type="submit" class="registerbtn btn btn-md btn-warning">Reģistrēt jaunu velosipēdu</button>
+            <br><br>
+<!--            <span th:if="${errorAddBicycle}" th:text="${errorAddBicycle}" class="alert alert-danger"></span>-->
+            <span th:if="${errorDeleteBicycle}" th:text="${errorDeleteBicycle}" class="alert alert-danger"></span>
+        </form>
+        <div class="panel-heading"> Velosipēdu saraksts:</div>
 
 
-            <table class="table">
-                <thead class="thead-light">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">
-                        <a th:href="@{/bicyclesName_asc}"> &#x2193; </a> name
-                    </th>
-                    <th scope="col">
-                        <a th:href="@{/bicyclesWeigh_asc}"> &#x2193; </a> svars
-                    </th>
-                    <th scope="col">
-                        <a th:href="@{/bicyclesDistance_asc}"> &#x2193; </a> attālums
-                    </th>
+        <table class="table">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">
+                    <a th:href="@{/bicyclesName_asc}"> &#x2193; </a> name
+                </th>
+                <th scope="col">
+                    <a th:href="@{/bicyclesWeigh_asc}"> &#x2193; </a> svars
+                </th>
+                <th scope="col">
+                    <a th:href="@{/bicyclesDistance_asc}"> &#x2193; </a> attālums
+                </th>
 
-                    <th sec:authorize="hasAuthority('ADMIN')" scope="col">ACTION</th>
-                </tr>
-                </thead>
+                <th sec:authorize="hasAuthority('ADMIN')" scope="col">ACTION</th>
+            </tr>
+            </thead>
 
-                <tbody>
-                <tr th:each="bicycle : ${bicycles}" class="table">
-                    <th th:text="${bicycle.id}" scope="col"></th>
-                    <th th:text="${bicycle.name}" scope="col"></th>
-                    <th th:text="${bicycle.weight}" scope="col"></th>
-                    <th th:text="${bicycle.distance}" scope="col"></th>
+            <tbody>
+            <tr th:each="bicycle : ${bicycles}" class="table">
+                <th th:text="${bicycle.id}" scope="col"></th>
+                <th th:text="${bicycle.name}" scope="col"></th>
+                <th th:text="${bicycle.weight}" scope="col"></th>
+                <th th:text="${bicycle.distance}" scope="col"></th>
 
-                    <td>
-                        <form sec:authorize="hasAuthority('ADMIN')" action="deleteBicycleRecord" method="GET">
-                            <input id="id" type="hidden" name="id" th:value="${bicycle.id}">
-                            <button type="submit" class="registerbtn btn btn-md btn-warning"> delete</button>
-                        </form>
-                    </td>
-                </tr>
+                <td>
+                    <form sec:authorize="hasAuthority('ADMIN')" action="deleteBicycleRecord" method="GET">
+                        <input id="id" type="hidden" name="id" th:value="${bicycle.id}">
+                        <button type="submit" class="registerbtn btn btn-md btn-warning"> delete</button>
+                    </form>
+                </td>
+            </tr>
 
-                </tbody>
-            </table>
-            <hr>
-            <footer th:replace="fragments/footer :: foot"></footer>
-            container    </div>
+            </tbody>
+        </table>
+        <footer th:replace="fragments/footer :: foot"></footer>
+    </div>
 </div>
 </body>
 </html>

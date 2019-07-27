@@ -8,71 +8,69 @@
 <body>
 <div th:replace="fragments/navigation :: navigation"></div>
 
-<div class="panel-group" style="margin-top:40px">
-    <div class="panel panel-primary">
-        <div sec:authorize="hasAuthority('ADMIN')" class="panel-heading"> Papildaprīkojuma reģistrācija</div>
-        <!--    https://github.com/thymeleaf/thymeleaf-extras-springsecurity-->
-        <form sec:authorize="hasAuthority('ADMIN')" action="accessories" method="POST">
-            <input id="accessoryName" type="text" name="accessoryName" placeholder="nosaukums">
-            <button type="submit" class="registerbtn btn btn-md btn-warning">Reģistrēt jaunu aprīkojumu</button>
-            <br><br>
-        </form>
-        <span th:if="${errorDeleteAccessory}" th:text="${errorDeleteAccessory}" class="alert alert-danger"></span>
-        <div class="panel-heading"> Papildaprīkojuma saraksts:</div>
-        <table class="table">
-            <thead class="thead-light">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">
-                    <a th:href="@{/accessories_asc}"> &#x2193; </a> papildaprīkojums
-                    <a th:href="@{/accessories_desc}"> &#x2191; </a>
-                </th>
-                <th colspan="2" sec:authorize="hasAuthority('ADMIN')" scope="col" style="text-align:center">ACTION</th>
-            </tr>
-            </thead>
+<div class="panel panel-group panel-primary" style="margin-top:40px">
+    <div sec:authorize="hasAuthority('ADMIN')" class="panel-heading"> Papildaprīkojuma reģistrācija</div>
+    <!--    https://github.com/thymeleaf/thymeleaf-extras-springsecurity-->
+    <form sec:authorize="hasAuthority('ADMIN')" action="accessories" method="POST">
+        <input id="accessoryName" type="text" name="accessoryName" placeholder="nosaukums">
+        <button type="submit" class="registerbtn btn btn-md btn-warning">Reģistrēt jaunu aprīkojumu</button>
+        <br><br>
+    </form>
+    <span th:if="${errorDeleteAccessory}" th:text="${errorDeleteAccessory}" class="alert alert-danger"></span>
+    <div class="panel-heading"> Papildaprīkojuma saraksts:</div>
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">
+                <a th:href="@{/accessories_asc}"> &#x2193; </a> papildaprīkojums
+                <a th:href="@{/accessories_desc}"> &#x2191; </a>
+            </th>
+            <th colspan="2" sec:authorize="hasAuthority('ADMIN')" scope="col" style="text-align:center">ACTION</th>
+        </tr>
+        </thead>
 
-            <tbody>
-            <tr th:each="accessory : ${accessories}" class="table">
-                <th th:text="${accessory.id}" scope="col"></th>
-                <th th:text="${accessory.accessoryName}" scope="col"></th>
+        <tbody>
+        <tr th:each="accessory : ${accessories}" class="table">
+            <th th:text="${accessory.id}" scope="col"></th>
+            <th th:text="${accessory.accessoryName}" scope="col"></th>
 
-                <td sec:authorize="hasAuthority('ADMIN')">
-                    <button th:onclick="'updateFunctionAccessory(' + ${accessory.id}+ ')'"
-                            class="registerbtn btn btn-md btn-warning">update
+            <td sec:authorize="hasAuthority('ADMIN')">
+                <button th:onclick="'updateFunctionAccessory(' + ${accessory.id}+ ')'"
+                        class="registerbtn btn btn-md btn-warning">update
+                </button>
+                <form method="post"
+                      th:action="@{'/accessories/'+ ${accessory.id}}"
+                      th:object="${accessory}"
+                      th:id="'myDIV' + ${accessory.id}">
+                    <input th:id="'accessoryName' + ${accessory.id}"
+                           type="text"
+                           name="accessoryName"
+                           style="display: none;"
+                           th:value="${accessory.accessoryName}">
+
+                    <input type="hidden" name="accessoryName">
+                    <button th:id="'accessoryNameSave' + ${accessory.id}"
+                            type="submit"
+                            style="display: none;"
+                            class="registerbtn btn btn-md btn-danger"> save
                     </button>
-                    <form method="post"
-                          th:action="@{'/accessories/'+ ${accessory.id}}"
-                          th:object="${accessory}"
-                          th:id="'myDIV' + ${accessory.id}">
-                        <input th:id="'accessoryName' + ${accessory.id}"
-                               type="text"
-                               name="accessoryName"
-                               style="display: none;"
-                               th:value="${accessory.accessoryName}">
+                </form>
+            </td>
 
-                        <input type="hidden" name="accessoryName">
-                        <button th:id="'accessoryNameSave' + ${accessory.id}"
-                                type="submit"
-                                style="display: none;"
-                                class="registerbtn btn btn-md btn-danger"> save
-                        </button>
-                    </form>
-                </td>
+            <td>
+                <form sec:authorize="hasAuthority('ADMIN')"
+                      th:action="@{'/deleteAccessoryRecord/'+ ${accessory.id}}"
+                      method="GET">
+                    <input type="hidden" name="id" th:value="${accessory.id}">
+                    <button type="submit" class="registerbtn btn btn-md btn-danger"> delete</button>
+                </form>
+            </td>
+        </tr>
 
-                <td>
-                    <form sec:authorize="hasAuthority('ADMIN')"
-                          th:action="@{'/deleteAccessoryRecord/'+ ${accessory.id}}"
-                          method="GET">
-                        <input type="hidden" name="id" th:value="${accessory.id}">
-                        <button type="submit" class="registerbtn btn btn-md btn-danger"> delete</button>
-                    </form>
-                </td>
-            </tr>
-
-            </tbody>
-        </table>
-        <footer th:replace="fragments/footer :: foot"></footer>
-    </div>
+        </tbody>
+    </table>
+    <footer th:replace="fragments/footer :: foot"></footer>
 </div>
 </body>
 </html>

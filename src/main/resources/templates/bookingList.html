@@ -7,85 +7,82 @@
 
 <body>
 <div th:replace="fragments/navigation :: navigation"></div>
-<div class="panel-group" style="margin-top:40px">
-    <div class="panel panel-primary">
-        <div class="panel-heading"> Rezervēt velosipēdu</div>
-        <form action="bookingList" method="post" th:object="${booking}">
-            <span th:if="${error}" th:text="${error}" class="alert alert-danger"> </span> <br><br>
-            datums
-            <select th:field="*{day}">
-                <option th:each="day : ${days}" th:value="${day.id}"
-                        th:text="${#dates.format(day.dayName, 'dd-MM-yyy')}">
-                </option>
-            </select>
+<div class="panel panel-group panel-primary" style="margin-top:40px">
+    <div class="panel-heading"> Rezervēt velosipēdu</div>
+    <form action="bookingList" method="post" th:object="${booking}">
+        <span th:if="${error}" th:text="${error}" class="alert alert-danger"> </span> <br><br>
+        datums
+        <select th:field="*{day}">
+            <option th:each="day : ${days}" th:value="${day.id}"
+                    th:text="${#dates.format(day.dayName, 'dd-MM-yyy')}">
+            </option>
+        </select>
 
-            , velosipēds
-            <select th:field="*{bicycle}">
-                <option th:each="bicycle : ${bicycles}" th:value="${bicycle.id}" th:text="${bicycle.name}">
-                </option>
-            </select>
+        , velosipēds
+        <select th:field="*{bicycle}">
+            <option th:each="bicycle : ${bicycles}" th:value="${bicycle.id}" th:text="${bicycle.name}">
+            </option>
+        </select>
 
-            , <br> papildaprīkojums: <br>
-            <th:block th:each="ac : ${accessories}">
-                <!--                  id + "for"  == nepieciesami prieks automatiskām pārbaudēm. (input + iD)-->
-                <input id="accessories" type="checkbox" th:field="*{accessories}" name="accessories"
-                       th:value="${ac.id}"/>
-                <label for="accessories" th:text="${ac.accessoryName}"></label>
-                <br>
-            </th:block>
+        , <br> papildaprīkojums: <br>
+        <th:block th:each="ac : ${accessories}">
+            <!--                  id + "for"  == nepieciesami prieks automatiskām pārbaudēm. (input + iD)-->
+            <input id="accessories" type="checkbox" th:field="*{accessories}" name="accessories"
+                   th:value="${ac.id}"/>
+            <label for="accessories" th:text="${ac.accessoryName}"></label>
             <br>
-            <button type="submit" class="registerbtn btn btn-md btn-primary"> Apstiprināt Rezervāciju !</button>
-            <br><br>
-        </form>
+        </th:block>
+        <br>
+        <button type="submit" class="registerbtn btn btn-md btn-primary"> Apstiprināt Rezervāciju !</button>
+        <br><br>
+    </form>
 
-        <div class="panel-heading"> Rezervācijas saraksts:</div>
+    <div class="panel-heading"> Rezervācijas saraksts:</div>
 
-        <table class="table">
-            <thead class="thead-light">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">
-                    <a th:href="@{/sortBookingsByData_asc}"> &#x2193; </a> datums
-                    <a th:href="@{/sortBookingsByData_desc}"> &#x2191; </a></th>
-                <th scope="col">
-                    <a th:href="@{/sortBookingsByBicycle_asc}"> &#x2193; </a>velosipēds
-                    <a th:href="@{/sortBookingsByBicycle_desc}"> &#x2191; </a>
-                </th>
-                <th scope="col">papildaprīkojums</th>
-                <th scope="col">
-                    <a th:href="@{/sortBookingsByUsers_asc}"> &#x2193; </a> darbinieks
-                    <a th:href="@{/sortBookingsByUsers_desc}"> &#x2191; </a>
-                </th>
-                <th sec:authorize="hasAuthority('ADMIN')" scope="col">ACTION</th>
-            </tr>
-            </thead>
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">
+                <a th:href="@{/sortBookingsByData_asc}"> &#x2193; </a> datums
+                <a th:href="@{/sortBookingsByData_desc}"> &#x2191; </a></th>
+            <th scope="col">
+                <a th:href="@{/sortBookingsByBicycle_asc}"> &#x2193; </a>velosipēds
+                <a th:href="@{/sortBookingsByBicycle_desc}"> &#x2191; </a>
+            </th>
+            <th scope="col">papildaprīkojums</th>
+            <th scope="col">
+                <a th:href="@{/sortBookingsByUsers_asc}"> &#x2193; </a> darbinieks
+                <a th:href="@{/sortBookingsByUsers_desc}"> &#x2191; </a>
+            </th>
+            <th sec:authorize="hasAuthority('ADMIN')" scope="col">ACTION</th>
+        </tr>
+        </thead>
 
-            <tbody>
-            <tr th:each="b : ${bookingsList}" class="table">
-                <th th:text="${b.id}" scope="col"></th>
-                <th th:text="${#dates.format(b.day.dayName, 'dd-MM-yyy')}" scope="col"></th>
-                <th th:text="${b.bicycle.name}" scope="col"></th>
-                <th scope="col">
-                    <th:block th:each="ac : ${b.accessories}">
-                        <p th:text="${ac.accessoryName}"></p>
-                    </th:block>
-                </th>
-                <th th:text="${b.email}" scope="col"></th>
+        <tbody>
+        <tr th:each="b : ${bookingsList}" class="table">
+            <th th:text="${b.id}" scope="col"></th>
+            <th th:text="${#dates.format(b.day.dayName, 'dd-MM-yyy')}" scope="col"></th>
+            <th th:text="${b.bicycle.name}" scope="col"></th>
+            <th scope="col">
+                <th:block th:each="ac : ${b.accessories}">
+                    <p th:text="${ac.accessoryName}"></p>
+                </th:block>
+            </th>
+            <th th:text="${b.email}" scope="col"></th>
 
-                <td>
-                    <form sec:authorize="hasAuthority('ADMIN')" th:action="@{'/deleteBookingRecord/' + ${b.id}}"
-                          method="GET">
-                        <input type="hidden" name="id" th:value="${b.id}">
-                        <button type="submit" class="registerbtn btn btn-md btn-warning"> delete</button>
-                    </form>
-                </td>
+            <td>
+                <form sec:authorize="hasAuthority('ADMIN')" th:action="@{'/deleteBookingRecord/' + ${b.id}}"
+                      method="GET">
+                    <input type="hidden" name="id" th:value="${b.id}">
+                    <button type="submit" class="registerbtn btn btn-md btn-warning"> delete</button>
+                </form>
+            </td>
 
-            </tr>
-            </tbody>
-        </table>
-
-        <footer th:replace="fragments/footer :: foot"></footer>
-    </div>
+        </tr>
+        </tbody>
+    </table>
+    <footer th:replace="fragments/footer :: foot"></footer>
 </div>
 </body>
 </html>

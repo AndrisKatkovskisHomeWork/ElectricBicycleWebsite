@@ -1,7 +1,6 @@
 package com.bicycles.bicycles.calendarDay;
 
 import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -19,7 +18,6 @@ public class Day implements Comparable<Day>{
 
     public Day() {
     }
-
 
     public Day(Date dayName) {
         this.dayName = dayName;
@@ -39,14 +37,6 @@ public class Day implements Comparable<Day>{
 
     public void setDayName(Date dayName) {
         this.dayName = dayName;
-    }
-
-    @Override
-    public String toString() {
-        return "Day{" +
-                "id=" + id +
-                ", dayName=" + dayName +
-                '}';
     }
 
     @Override

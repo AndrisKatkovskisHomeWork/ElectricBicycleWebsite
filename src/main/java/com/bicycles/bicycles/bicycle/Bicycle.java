@@ -56,14 +56,4 @@ public class Bicycle {
     public void setDistance(String distance) {
         this.distance = distance;
     }
-
-    @Override
-    public String toString() {
-        return "Bicycle{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", weight='" + weight + '\'' +
-                ", distance='" + distance + '\'' +
-                '}';
-    }
 }

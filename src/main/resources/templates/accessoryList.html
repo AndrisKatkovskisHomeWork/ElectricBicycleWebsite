@@ -15,8 +15,8 @@
         <input id="accessoryName" type="text" name="accessoryName" placeholder="nosaukums">
         <button type="submit" class="registerbtn btn btn-md btn-warning">Reģistrēt jaunu aprīkojumu</button>
         <br><br>
+        <span th:if="${errorDeleteAccessory}" th:text="${errorDeleteAccessory}" class="alert alert-danger"></span>
     </form>
-    <span th:if="${errorDeleteAccessory}" th:text="${errorDeleteAccessory}" class="alert alert-danger"></span>
     <div class="panel-heading"> Papildaprīkojuma saraksts:</div>
     <table class="table">
         <thead class="thead-light">
@@ -26,7 +26,7 @@
                 <a th:href="@{/accessories_asc}"> &#x2193; </a> papildaprīkojums
                 <a th:href="@{/accessories_desc}"> &#x2191; </a>
             </th>
-            <th colspan="2" sec:authorize="hasAuthority('ADMIN')" scope="col" style="text-align:center">ACTION</th>
+            <th colspan="2" sec:authorize="hasAuthority('ADMIN')" scope="col" style="text-align:center">Iespējas</th>
         </tr>
         </thead>
 

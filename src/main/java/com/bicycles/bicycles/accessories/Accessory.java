@@ -37,13 +37,5 @@ public class Accessory {
     public void setAccessoryName(String accessoryName) {
         this.accessoryName = accessoryName;
     }
-
-    @Override
-    public String toString() {
-        return "Accessory{" +
-                "id=" + id +
-                ", accessoryName='" + accessoryName + '\'' +
-                '}';
-    }
 }
 

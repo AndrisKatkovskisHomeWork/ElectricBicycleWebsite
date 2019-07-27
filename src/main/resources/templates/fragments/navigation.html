@@ -4,10 +4,10 @@
 
 
 <div th:fragment="navigation">
-    <header class="header">
+    <header class="header-navigation">
 
         <a th:href="@{/bookingList}"> <img sec:authorize="isAuthenticated()" th:src="@{/images/logo2.png}"
-                                class="imageHeader"/></a><br>
+                                           class="imageHeader"/></a>
         <a th:href="@{/}"> <img sec:authorize="!isAuthenticated()" th:src="@{/images/login2.png}"
                                 class="imageLogin"/></a><br>
 
@@ -24,9 +24,9 @@
             admin </a>
 
         <a sec:authorize="!isAuthenticated()" th:href="@{/registration}" class="btn-right btn btn-md btn-warning">Reģistrēties</a>
-        <a sec:authorize="!isAuthenticated()" th:href="@{/}" class="btn-right btn btn-md btn-warning"> Ienākt</a>
+        <a sec:authorize="!isAuthenticated()" th:href="@{/}" class="btn-right btn btn-md btn-warning">Ienākt</a>
 
-        <a align="right" class="btn-right btn btn-md btn-default" onClick="window.location.reload();"> lapa atjaunota:
+        <a align="right" class="btn-right btn btn-md btn-default" onClick="window.location.reload();">lapa atjaunota:
             <strong th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy HH:mm:ss')}"></strong></a>
     </header>
 

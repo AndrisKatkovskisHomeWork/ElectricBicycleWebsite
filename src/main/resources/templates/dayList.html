@@ -3,56 +3,51 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
-<head>
-    <title> Electric bicycle website </title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/remaining.css}"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-</head>
+<head th:replace="fragments/headers :: head"></head>
 
 <body>
 <div th:replace="fragments/navigation :: navigation"></div>
 
-    <div class="panel-group" style="margin-top:40px">
-        <div class="panel panel-primary">
-            <div sec:authorize="hasAuthority('ADMIN')" class="panel-heading"> Dienas reģistrācija</div>
-            <form sec:authorize="hasAuthority('ADMIN')" action="days" method="post">
-                Atvērt jaunu datumu <input id="date" type="date" name="dayName"
-                                           th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"
-                                           th:max="${#temporals.format(maxDate, 'yyyy-MM-dd')}" placeholder="dayName">
-                <button type="submit" class="registerbtn btn btn-md btn-warning">Datuma reģistrācija</button>
-                <br> <br> <span th:if="${errorAddDay}" th:text="${errorAddDay}" class="alert alert-danger"></span>
-                <span th:if="${errorDelete}" th:text="${errorDelete}" class="alert alert-danger"></span>
-            </form>
-            <div class="panel-heading">Datumu saraksts:</div>
+<div class="panel-group" style="margin-top:40px">
+    <div class="panel panel-primary">
+        <div sec:authorize="hasAuthority('ADMIN')" class="panel-heading"> Dienas reģistrācija</div>
+        <form sec:authorize="hasAuthority('ADMIN')" action="days" method="post">
+            Atvērt jaunu datumu <input id="date" type="date" name="dayName"
+                                       th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"
+                                       th:max="${#temporals.format(maxDate, 'yyyy-MM-dd')}" placeholder="dayName">
+            <button type="submit" class="registerbtn btn btn-md btn-warning">Datuma reģistrācija</button>
+            <br> <br> <span th:if="${errorAddDay}" th:text="${errorAddDay}" class="alert alert-danger"></span>
+            <span th:if="${errorDelete}" th:text="${errorDelete}" class="alert alert-danger"></span>
+        </form>
+        <div class="panel-heading">Datumu saraksts:</div>
 
-            <table class="table">
-                <thead class="thead-light">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Diena</th>
-                    <th sec:authorize="hasAuthority('ADMIN')" scope="col">ACTION</th>
-                </tr>
-                </thead>
+        <table class="table">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Diena</th>
+                <th sec:authorize="hasAuthority('ADMIN')" scope="col">ACTION</th>
+            </tr>
+            </thead>
 
-                <tbody>
-                <tr th:each="day : ${days}" class="table">
-                    <th th:text="${day.id}" scope="col"></th>
-                    <th th:text="${#dates.format(day.dayName, 'dd-MM-yyy')}" scope="col"></th>
+            <tbody>
+            <tr th:each="day : ${days}" class="table">
+                <th th:text="${day.id}" scope="col"></th>
+                <th th:text="${#dates.format(day.dayName, 'dd-MM-yyy')}" scope="col"></th>
 
-                    <td>
-                        <form sec:authorize="hasAuthority('ADMIN')" th:action="@{'/deleteDayRecord/' + ${day.id}}"
-                              method="GET">
-                            <input type="hidden" name="id" th:value="${day.id}">
-                            <button type="submit" class="registerbtn btn btn-md btn-warning"> delete</button>
-                        </form>
-                    </td>
-                </tr>
+                <td>
+                    <form sec:authorize="hasAuthority('ADMIN')" th:action="@{'/deleteDayRecord/' + ${day.id}}"
+                          method="GET">
+                        <input type="hidden" name="id" th:value="${day.id}">
+                        <button type="submit" class="registerbtn btn btn-md btn-warning"> delete</button>
+                    </form>
+                </td>
+            </tr>
 
 
-                </tbody>
-            </table>
-            <footer th:replace="fragments/footer :: foot"></footer>
+            </tbody>
+        </table>
+        <footer th:replace="fragments/footer :: foot"></footer>
     </div>
 </div>
 </body>

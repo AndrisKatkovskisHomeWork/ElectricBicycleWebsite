@@ -10,7 +10,9 @@
 
 <div class="panel panel-group panel-primary" style="margin-top:40px">
     <div sec:authorize="hasAuthority('ADMIN')" class="panel-heading"> Dienas reģistrācija</div>
-    <form sec:authorize="hasAuthority('ADMIN')" action="days" method="post">
+    <form sec:authorize="hasAuthority('ADMIN')"
+          th:action="@{'/days/'}"
+          method="post">
         Atvērt jaunu datumu <input id="date" type="date" name="dayName"
                                    th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"
                                    th:max="${#temporals.format(maxDate, 'yyyy-MM-dd')}" placeholder="dayName">
@@ -35,10 +37,11 @@
             <th th:text="${#dates.format(day.dayName, 'dd-MM-yyy')}" scope="col"></th>
 
             <td>
-                <form sec:authorize="hasAuthority('ADMIN')" th:action="@{'/deleteDayRecord/' + ${day.id}}"
+                <form sec:authorize="hasAuthority('ADMIN')"
+                      th:action="@{'/deleteDayRecord/' + ${day.id}}"
                       method="GET">
                     <input type="hidden" name="id" th:value="${day.id}">
-                    <button type="submit" class="registerbtn btn btn-md btn-warning"> delete</button>
+                    <button type="submit" class="registerbtn btn btn-md btn-danger"> delete</button>
                 </form>
             </td>
         </tr>

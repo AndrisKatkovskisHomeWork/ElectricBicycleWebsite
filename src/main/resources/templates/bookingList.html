@@ -9,7 +9,9 @@
 <div th:replace="fragments/navigation :: navigation"></div>
 <div class="panel panel-group panel-primary" style="margin-top:40px">
     <div class="panel-heading"> Rezervēt velosipēdu</div>
-    <form action="bookingList" method="post" th:object="${booking}">
+    <form th:action="@{'/bookingList/'}"
+          th:object="${booking}"
+          method="post">
         <span th:if="${error}" th:text="${error}" class="alert alert-danger"> </span> <br><br>
         datums
         <select th:field="*{day}">
@@ -26,7 +28,6 @@
 
         , <br> papildaprīkojums: <br>
         <th:block th:each="ac : ${accessories}">
-            <!--                  id + "for"  == nepieciesami prieks automatiskām pārbaudēm. (input + iD)-->
             <input id="accessories" type="checkbox" th:field="*{accessories}" name="accessories"
                    th:value="${ac.id}"/>
             <label for="accessories" th:text="${ac.accessoryName}"></label>
@@ -72,10 +73,11 @@
             <th th:text="${b.email}" scope="col"></th>
 
             <td>
-                <form sec:authorize="hasAuthority('ADMIN')" th:action="@{'/deleteBookingRecord/' + ${b.id}}"
+                <form sec:authorize="hasAuthority('ADMIN')"
+                      th:action="@{'/deleteBookingRecord/' + ${b.id}}"
                       method="GET">
                     <input type="hidden" name="id" th:value="${b.id}">
-                    <button type="submit" class="registerbtn btn btn-md btn-warning"> delete</button>
+                    <button type="submit" class="registerbtn btn btn-md btn-danger"> delete</button>
                 </form>
             </td>
 

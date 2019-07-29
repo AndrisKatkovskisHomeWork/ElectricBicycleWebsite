@@ -5,8 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-
 @Controller
 public class BicycleController {
 
@@ -38,7 +36,7 @@ public class BicycleController {
     }
 
     @RequestMapping(value = "/bicycles/{id}", method = RequestMethod.GET)
-    public Bicycle getBicycle(@PathVariable String id) {
+    public Bicycle getBicycle(@PathVariable int id) {
         return this.bicycleService.getBicycle(id);
     }
 
@@ -49,8 +47,8 @@ public class BicycleController {
         return "bicycleList";
     }
 
-    @RequestMapping(value = "/deleteBicycleRecord{id}", method = RequestMethod.GET)
-    public String deleteBicycle(@PathVariable String id, Model model) {
+    @RequestMapping(value = "/deleteBicycleRecord/{id}", method = RequestMethod.GET)
+    public String deleteBicycle(@PathVariable int id, Model model) {
         boolean isDeleted = bicycleService.deleteBicycle(id);
         if (!isDeleted) {
             model.addAttribute("errorDeleteBicycle", "Kļūda dzēšot velosipēdu! Velosipēdu izdzēst iespējams, " +
@@ -61,11 +59,13 @@ public class BicycleController {
         return "bicycleList";
     }
 
-    @RequestMapping(value = "/bicycles/{id}", method = RequestMethod.PUT)
-    public void updateBicycle(@PathVariable String id,
+    @RequestMapping(value = "/bicycles/{id}", method = RequestMethod.POST)
+    public String updateBicycle(@PathVariable int id,
                               @RequestBody Bicycle bicycle) {
         this.bicycleService.updateBicycle(bicycle);
-    }
+        return "redirect:/bicycles";
 
+
+    }
 
 }

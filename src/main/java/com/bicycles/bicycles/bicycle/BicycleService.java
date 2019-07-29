@@ -19,7 +19,7 @@ public class BicycleService {
         return bicycles;
     }
 
-    public Bicycle getBicycle(String id) {
+    public Bicycle getBicycle(int id) {
         return bicycleRepository.findById(id).get();
     }
 
@@ -28,7 +28,7 @@ public class BicycleService {
     }
 
 
-    public boolean deleteBicycle(String id){
+    public boolean deleteBicycle(int id) {
         try {
             bicycleRepository.deleteById(id);
         } catch (Exception e) {
@@ -42,29 +42,21 @@ public class BicycleService {
         bicycleRepository.save(bicycle);
     }
 
-    public List<Bicycle> sortBicyclesWeightASC(){
+    public List<Bicycle> sortBicyclesWeightASC() {
         List<Bicycle> bicycles = new ArrayList<>();
         bicycleRepository.findAll(Sort.by("weight")).forEach((bicycles::add));
         return bicycles;
     }
 
-    public List<Bicycle> sortBicyclesDistanceASC(){
+    public List<Bicycle> sortBicyclesDistanceASC() {
         List<Bicycle> bicycles = new ArrayList<>();
         bicycleRepository.findAll(Sort.by("distance")).forEach((bicycles::add));
         return bicycles;
     }
 
-    public List<Bicycle> sortBicyclesNameASC(){
+    public List<Bicycle> sortBicyclesNameASC() {
         List<Bicycle> bicycles = new ArrayList<>();
         bicycleRepository.findAll(Sort.by("name")).forEach((bicycles::add));
         return bicycles;
     }
 }
-
-
-//
-//    public List<Accessory> sortAccessoriesDESC() {
-//        List<Accessory> accessories = new ArrayList<>();
-//        accessoryRepository.findAll(Sort.by("accessoryName").descending()).forEach(accessories::add);
-//        return accessories;
-//    }

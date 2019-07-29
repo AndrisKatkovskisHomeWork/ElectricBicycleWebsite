@@ -10,8 +10,9 @@
 
 <div class="panel panel-group panel-primary" style="margin-top:40px">
     <div sec:authorize="hasAuthority('ADMIN')" class="panel-heading"> Papildaprīkojuma reģistrācija</div>
-    <!--    https://github.com/thymeleaf/thymeleaf-extras-springsecurity-->
-    <form sec:authorize="hasAuthority('ADMIN')" action="accessories" method="POST">
+    <form sec:authorize="hasAuthority('ADMIN')"
+          th:action="@{'/accessories/'}"
+          method="POST">
         <input id="accessoryName" type="text" name="accessoryName" placeholder="nosaukums">
         <button type="submit" class="registerbtn btn btn-md btn-warning">Reģistrēt jaunu aprīkojumu</button>
         <br><br>

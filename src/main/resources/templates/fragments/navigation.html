@@ -19,7 +19,7 @@
         <a sec:authorize="isAuthenticated()" th:href="@{/days}" class="btn btn-md btn-success">Dienas </a>
         <a sec:authorize="isAuthenticated()" th:href="@{/bookingList}" class="btn btn-md btn-success">REZERVĀCIJA </a>
 
-        <a sec:authorize="isAuthenticated()" th:href="@{/logout}" class="btn-right btn btn-md btn-danger">Iziet</a>
+        <a sec:authorize="isAuthenticated()" th:href="@{/logout}" class="btn-right btn btn-md btn-dangerbtn-danger">Iziet</a>
         <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/admin/home}" class="btn-right btn btn-md btn-warning">
             admin </a>
 

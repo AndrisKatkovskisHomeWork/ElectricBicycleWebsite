@@ -10,15 +10,15 @@
 
 <div class="panel panel-group panel-primary" style="margin-top:40px">
     <div sec:authorize="hasAuthority('ADMIN')" class="panel-heading"> Velosipēda reģistrācija</div>
-    <form sec:authorize="hasAuthority('ADMIN')" action="bicycles" method="post">
-        id <input type="text" name="id" placeholder="fabrikas Nr">
+    <form sec:authorize="hasAuthority('ADMIN')"
+          th:action="@{'/bicycles/'}"
+          method="post">
         nosaukums <input id="name" type="text" name="name" placeholder="nosaukums">
         svars <input type="text" name="weight" placeholder="svars">
         attālums <input type="text" name="distance" placeholder="attālums">
 
         <button type="submit" class="registerbtn btn btn-md btn-warning">Reģistrēt jaunu velosipēdu</button>
         <br><br>
-        <!--            <span th:if="${errorAddBicycle}" th:text="${errorAddBicycle}" class="alert alert-danger"></span>-->
         <span th:if="${errorDeleteBicycle}" th:text="${errorDeleteBicycle}" class="alert alert-danger"></span>
     </form>
     <div class="panel-heading"> Velosipēdu saraksts:</div>
@@ -38,7 +38,7 @@
                 <a th:href="@{/bicyclesDistance_asc}"> &#x2193; </a> attālums
             </th>
 
-            <th sec:authorize="hasAuthority('ADMIN')" scope="col">Iespējas</th>
+            <th colspan="2" sec:authorize="hasAuthority('ADMIN')" scope="col" style="text-align:center">Iespējas</th>
         </tr>
         </thead>
 
@@ -49,10 +49,48 @@
             <th th:text="${bicycle.weight}" scope="col"></th>
             <th th:text="${bicycle.distance}" scope="col"></th>
 
+            <td sec:authorize="hasAuthority('ADMIN')">
+                <button th:onclick="'updateFunctionBicycle(' + ${bicycle.id}+ ')'"
+                        class="registerbtn btn btn-md btn-warning">update
+                </button>
+                <form method="post"
+                      th:action="@{'/bicycles/'+ ${bicycle.id}}"
+                      th:object="${bicycle}"
+                      th:id="'myDIV' + ${bicycle.id}">
+
+                    <input th:id="'bicycleName' + ${bicycle.id}"
+                           type="text"
+                           name="name"
+                           style="display: none;"
+                           th:value="${bicycle.name}">
+
+                    <input th:id="'bicycleWeight' + ${bicycle.id}"
+                           type="text"
+                           name="weight"
+                           style="display: none;"
+                           th:value="${bicycle.weight}">
+
+                    <input th:id="'bicycleDistance' + ${bicycle.id}"
+                           type="text"
+                           name="distance"
+                           style="display: none;"
+                           th:value="${bicycle.distance}">
+
+                    <input type="hidden" name="name">
+                    <button th:id="'bicycleNameSave' + ${bicycle.id}"
+                            type="submit"
+                            style="display: none;"
+                            class="registerbtn btn btn-md btn-danger"> save
+                    </button>
+                </form>
+            </td>
+
             <td>
-                <form sec:authorize="hasAuthority('ADMIN')" action="deleteBicycleRecord" method="GET">
+                <form sec:authorize="hasAuthority('ADMIN')"
+                      th:action="@{'/deleteBicycleRecord/'+ ${bicycle.id}}"
+                      method="GET">
                     <input id="id" type="hidden" name="id" th:value="${bicycle.id}">
-                    <button type="submit" class="registerbtn btn btn-md btn-warning"> delete</button>
+                    <button type="submit" class="registerbtn btn btn-md btn-danger"> delete</button>
                 </form>
             </td>
         </tr>

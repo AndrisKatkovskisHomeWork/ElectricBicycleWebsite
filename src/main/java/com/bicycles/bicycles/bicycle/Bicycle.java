@@ -1,35 +1,32 @@
 package com.bicycles.bicycles.bicycle;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Bicycle {
 
     @Id
-    @Column(name="id_bicycle")
-    private String id;
+    @Column(name = "id_bicycle")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     private String name;
     private String weight;
     private String distance;
-//    private boolean available; // for "not broken";
 
     public Bicycle() {
     }
 
-    public Bicycle(String id, String name, String weight, String distance) {
-        this.id = id;
+    public Bicycle(String name, String weight, String distance) {
         this.name = name;
         this.weight = weight;
         this.distance = distance;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

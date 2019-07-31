@@ -25,15 +25,16 @@ public class DayService {
     public boolean addDay(Day day) {
         try {
             dayRepository.save(day);
-        }catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
         return true;
     }
+
     public boolean deleteDay(int id) {
         try {
             dayRepository.deleteById(id);
-        } catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
         return true;

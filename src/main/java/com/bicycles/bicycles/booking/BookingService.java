@@ -1,6 +1,5 @@
 package com.bicycles.bicycles.booking;
 
-
 import com.bicycles.bicycles.loginPart.model.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -25,9 +24,6 @@ public class BookingService {
         return bookings;
     }
 
-    //    public Booking getBooking(int id) {
-//        return bookingRepository.findById(id).get();
-//    }
     public boolean addBooking(Booking booking) {
         List<Booking> byDayAndBicycle = bookingRepository.findByDayAndBicycle(booking.getDay(), booking.getBicycle());
         try {
@@ -46,10 +42,6 @@ public class BookingService {
     public void deleteBooking(int id) {
         bookingRepository.deleteById(id);
     }
-
-//    public void updateBooking(Booking booking) {
-//        bookingRepository.save(booking);
-//    }
 
     public List<Booking> sortBookingsByDataASC() {
         List<Booking> bookings = new ArrayList<>();

@@ -2,24 +2,23 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
-
 <div th:fragment="navigation">
     <header class="header-navigation">
 
         <a th:href="@{/bookingList}"> <img sec:authorize="isAuthenticated()" th:src="@{/images/logo2.png}"
-                                           class="imageHeader"/></a>
+                                            class="imageHeader"/></a>
         <a th:href="@{/}"> <img sec:authorize="!isAuthenticated()" th:src="@{/images/login2.png}"
-                                class="imageLogin"/></a><br>
+                                            class="imageLogin"/></a><br>
 
         <a th:href="@{/insurance}" class="btn btn-md btn-info">Apdrošināšana</a>
         <a th:href="@{/myContacts}" class="btn btn-md btn-info">Kontaktinformācija</a>
         <a sec:authorize="isAuthenticated()" th:href="@{/accessories}"
-           class="btn btn-md btn-success">Papildaprīkojums</a>
+                                            class="btn btn-md btn-success">Papildaprīkojums</a>
         <a sec:authorize="isAuthenticated()" th:href="@{/bicycles}" class="btn btn-md btn-success">Velosipēdi</a>
         <a sec:authorize="isAuthenticated()" th:href="@{/days}" class="btn btn-md btn-success">Dienas </a>
         <a sec:authorize="isAuthenticated()" th:href="@{/bookingList}" class="btn btn-md btn-success">REZERVĀCIJA </a>
 
-        <a sec:authorize="isAuthenticated()" th:href="@{/logout}" class="btn-right btn btn-md btn-dangerbtn-danger">Iziet</a>
+        <a sec:authorize="isAuthenticated()" th:href="@{/logout}" class="btn-right btn btn-md btn-danger">Iziet</a>
         <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/admin/home}" class="btn-right btn btn-md btn-warning">
             admin </a>
 

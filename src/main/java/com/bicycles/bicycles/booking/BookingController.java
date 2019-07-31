@@ -20,8 +20,6 @@ public class BookingController {
     AccessoryService accessoryService;
     @Autowired
     BicycleService bicycleService;
-//    @Autowired
-//    EmployeeService employeeService;
 
     @RequestMapping(value = "/bookingList", method = RequestMethod.GET)
     public String getAllBookings(Model model) {
@@ -79,18 +77,12 @@ public class BookingController {
         return "bookingList";
     }
 
-
-//        @RequestMapping(value = "/bookingList/{id}", method = RequestMethod.GET)
-//    public Booking getBooking(@PathVariable int id){
-//        return this.bookingService.getBooking(id);
-//    }
-
     @RequestMapping(value = "/bookingList", method = RequestMethod.POST)
     public String addBooking(@ModelAttribute Booking booking, BindingResult bindingResult, Model model) {
-        boolean isSaved  = bookingService.addBooking(booking);
-        if(!isSaved) {
+        boolean isSaved = bookingService.addBooking(booking);
+        if (!isSaved) {
             model.addAttribute("error", "Kļūda saglabājot rezervāciju!" +
-                    " Lūdzu pārbaudīt, vai norādītajā datumā velosipēds jau nav aizņemts!" );
+                    " Lūdzu pārbaudīt, vai norādītajā datumā velosipēds jau nav aizņemts!");
         }
         dayAccesoryBicycleServiceAndBooking(model);
         model.addAttribute("bookingsList", bookingService.getAllBookings());
@@ -102,14 +94,4 @@ public class BookingController {
         this.bookingService.deleteBooking(id);
         return "redirect:/bookingList";
     }
-
-
-
-//    @RequestMapping(value = "/bookingList/{id}", method = RequestMethod.PUT)
-//
-//    public void updateBooking(@PathVariable int id,
-//                                @RequestBody Booking booking) {
-//        this.bookingService.updateBooking(booking);
-//    }
-
 }

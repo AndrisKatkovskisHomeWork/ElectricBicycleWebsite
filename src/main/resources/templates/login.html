@@ -21,7 +21,7 @@
                        id="password" name="password" class="form-control"/> <br/>
 
                 <div align="center" th:if="${param.error}">
-                    <p style="color: #FF1C19">Nepareizs e-pasts / parole! Lūdzu, mēģiniet vēlreiz!</p>
+                    <p class="validation-message">Nepareizs e-pasts / parole! Lūdzu, mēģiniet vēlreiz!</p>
                 </div>
                 <button class="btn btn-primary btn-block" name="Submit" value="Login" type="Submit"
                         th:text="Ienākt"></button>

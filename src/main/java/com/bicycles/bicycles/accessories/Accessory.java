@@ -1,7 +1,6 @@
 package com.bicycles.bicycles.accessories;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 @Entity
 public class Accessory {
@@ -11,14 +10,13 @@ public class Accessory {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @NotNull    //// not working !!!!
     @Column(name = "accessory_name")
     private String accessoryName;
 
     public Accessory() {
     }
 
-    public Accessory(@NotNull String accessoryName) {
+    public Accessory(String accessoryName) {
         this.accessoryName = accessoryName;
     }
 

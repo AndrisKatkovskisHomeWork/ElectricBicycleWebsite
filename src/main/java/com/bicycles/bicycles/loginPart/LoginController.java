@@ -20,11 +20,9 @@ public class LoginController {
     private UserService userService;
 
     @RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
-    //   public ModelAndView login() {
     public String login() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
-//        return modelAndView;
         return "login";
     }
 
@@ -37,7 +35,6 @@ public class LoginController {
     public String accessDenied() {
         return "access-denied";
     }
-
 
     @RequestMapping("/myContacts")
     public String myContacts() {
@@ -69,7 +66,6 @@ public class LoginController {
 
         }
         modelAndView.setViewName("registration");
-
         return modelAndView;
     }
 

@@ -28,7 +28,7 @@ public class User {
     @NotEmpty(message = "*Lūdzu ievadīt e-pasta adresi")
     private String email;
     @Column(name = "password")
-    @Length(min = 5, message = "*Parolei jābūt vismaz 5 sibolu garai")
+    @Length(min = 5, message = "*Parolei jābūt vismaz 5 sibolus garai")
     private String password;
     @Column(name = "name")
     @NotEmpty(message = "*Lūdzu ievadīt vārdu")

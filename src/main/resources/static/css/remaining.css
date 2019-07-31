@@ -4,7 +4,6 @@ body {
     outline-style: solid;
     outline-color: #FF7F26;
     font-weight: 400;
-
 }
 
 .header-navigation {
@@ -20,7 +19,6 @@ body {
 .imageHeader {
     width: 40%;
 }
-
 
 form {
     padding: 0.5em 10%;

@@ -52,16 +52,13 @@ public class AccessoryController {
         }
             this.accessoryService.deleteAccessory(id);
         model.addAttribute("accessories", this.accessoryService.getAllAccessories());
-
         return "accessoryList";
     }
-
 
     @RequestMapping(value = "/accessories/{id}", method = RequestMethod.PUT)
     public void updateAccessory(@PathVariable int id,
                                 @RequestBody Accessory accessory) {
         this.accessoryService.updateAccessory(accessory);
     }
-
 
 }

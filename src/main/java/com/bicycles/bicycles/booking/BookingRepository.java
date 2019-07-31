@@ -8,6 +8,4 @@ import java.util.List;
 
 public interface BookingRepository extends PagingAndSortingRepository<Booking, Integer> {
     List<Booking> findByDayAndBicycle(Day d, Bicycle b);
-
-
 }

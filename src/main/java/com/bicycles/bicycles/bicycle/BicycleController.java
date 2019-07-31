@@ -61,11 +61,9 @@ public class BicycleController {
 
     @RequestMapping(value = "/bicycles/{id}", method = RequestMethod.POST)
     public String updateBicycle(@PathVariable int id,
-                              @RequestBody Bicycle bicycle) {
+                                @RequestBody Bicycle bicycle) {
         this.bicycleService.updateBicycle(bicycle);
         return "redirect:/bicycles";
-
-
     }
 
 }

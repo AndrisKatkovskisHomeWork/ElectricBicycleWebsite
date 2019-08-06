@@ -1,4 +1,4 @@
-#  Electric bicycle website 
+#  Product Web 
 The application offers:
 * admin to register a new one (bike, accessories, day for booking), and also can edit / delete records.
 * Bicycle booking for a regular user (or admin).
